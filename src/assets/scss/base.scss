@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+@import "./mixin";
+@import "./variables";
+
+
+*, *::after, *::before {
+    margin : 0;
+    padding : 0;
+    box-sizing : inherit;
+}
+
+//This define how large 1rem is.
+html {
+    font-size : 62.5%; //1rem = 10px
+
+    @include respond(big-desktop) {
+        font-size : 75%; //1rem = 12px
+    }
+
+    @include respond(tab-land) {
+        font-size : 56.25%; //1rem = 9px
+    }
+
+    @include respond(tab-port) {
+        font-size : 50%; //1rem = 8px
+    }
+
+    @include respond(phone) {
+        font-size : 30%;
+    }
+
+}
+
+body {
+    font-family : "Lato", sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight : 300;
+    /*font-size : 16px;*/
+    line-height : 1.7;
+    color : $color-grey-dark-1;
+    box-sizing : border-box;
+
+    @include respond(tab-port) {
+        padding : 0;
+    }
+
+    ::selection {
+    background-color : $color-primary;
+    color : $color-white;
+    }
+}

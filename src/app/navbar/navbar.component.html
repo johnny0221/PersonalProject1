@@ -1,0 +1,81 @@
+<nav class="nav__large">
+  <div class="nav__logo">
+    <svg class="nav__logo--svg">
+      <use xlink:href="../../assets/sprite.svg#cake"></use>
+    </svg>
+    <p>歐莫手作幸福</p>
+  </div>
+  <ul>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#book"></use>
+      </svg>
+      <a href="#" class="nav__item">關於歐莫</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#birthday"></use>
+      </svg>
+      <a href="#" class="nav__item">商品介紹</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#phone"></use>
+      </svg>
+      <a href="#" class="nav__item">聯絡歐莫</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#news"></use>
+      </svg>
+      <a href="#" class="nav__item">近期活動</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#problem"></use>
+      </svg>
+      <a href="#" class="nav__item">問題回報</a>
+    </li>
+  </ul>
+</nav>
+<nav class="nav__small">
+  <div class="nav__small--content">
+    <svg class="nav__small--logo" (click)="toggle()">
+      <use xlink:href="../../assets/sprite.svg#menu"></use>
+    </svg>
+    <p class="nav__small--text">歐莫手作幸福</p>
+    <p>&nbsp;</p>
+  </div>
+  <ul [ngClass]="{active : i}">
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#book"></use>
+      </svg>
+      <a href="#" class="nav__item">關於歐莫</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#birthday"></use>
+      </svg>
+      <a href="#" class="nav__item">商品介紹</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#phone"></use>
+      </svg>
+      <a href="#" class="nav__item">聯絡歐莫</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#news"></use>
+      </svg>
+      <a href="#" class="nav__item">近期活動</a>
+    </li>
+    <li>
+      <svg class="nav__item--svg">
+        <use xlink:href="../../assets/sprite.svg#problem"></use>
+      </svg>
+      <a href="#" class="nav__item">問題回報</a>
+    </li>
+  </ul>
+</nav>
