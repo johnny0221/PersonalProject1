@@ -1,0 +1,11 @@
+{
+  "name": "omodessert",
+  "version": "1.0.0",
+  "description": "an official website for omo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johnny",
+  "license": "ISC"
+}
