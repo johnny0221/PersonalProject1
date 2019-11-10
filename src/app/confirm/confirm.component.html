@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="heading-4">確認訊息</h1>
+<div mat-dialog-content>
+    <p>{{data.message}}</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">是</button>
+    <button mat-button (click)="onNoClick()">否</button>
+</div>

@@ -1,0 +1,159 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixin';
+
+.active {
+    opacity : 1 !important;
+    visibility: visible !important;
+}
+
+.nav {
+    &__large {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) 1fr repeat(5, minmax(6rem, 1fr)) 1fr;
+
+        background-color : $color-grey-dark-2;
+        color : $color-white;
+        font-size : 2rem;
+
+        & ul {
+            grid-column: 3 / 8;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+            justify-items: center;
+
+            & li {
+                display : grid;
+                grid-template-columns: repeat(2, max-content);
+                align-items: center;
+                grid-gap: 1rem;
+                transition : all, .2s;
+
+                &:hover, &:active {
+                    transform : skewX(20deg) scale(1.1);
+                    text-shadow : .5rem 1rem 2rem rgba($color-black, .2);
+                    cursor : pointer;
+                }
+            }
+        }
+
+    @media(max-width : 1150px) {
+        display : none;
+        }
+    }
+
+    &__logo {
+        padding: 1rem;
+        grid-column: 1 / 2;
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        grid-column-gap: 1rem;
+        align-items: center;
+
+        &--svg {
+            fill: $color-white;
+            height: 3.5rem;
+            width: 3.5rem;
+        }
+    }
+
+    &__item--svg {
+        fill: $color-white;
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    &__item:visited, &__item:link {
+        text-decoration: none;
+        color: white;
+    }
+
+    //Phone / Ipad screen start
+    &__small {
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        
+        & ul {
+            position: fixed;
+            top: 7rem;
+            left: 0;
+            width : 100%;
+            display : block;
+            opacity : 0;
+            visibility: hidden;
+            transition : opacity .4s;
+
+            @include respond(tab-port) {
+                top: 6rem;
+            }
+
+            @include respond(phone) {
+                top: 5rem;
+            }
+            
+            & li {
+                display : grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                background-color : $color-grey-dark-2;
+                font-size : 2.5rem;
+                color :$color-white;
+                border-bottom: 1px solid $color-white ; 
+                padding: 2rem;   
+
+                & svg {
+                    justify-self: end;
+                    margin-right: 1rem;
+
+                    @include respond(phone) {
+                        height: 1.5rem;
+                        width: 1.5rem;
+                    }
+                }
+
+                & a {
+                    justify-self: start;
+                }
+            }
+        }
+
+        &--content {
+            font-size : 3rem;
+            width : 100%;
+            padding : 10px;
+            background-color : $color-grey-dark-2;
+            border-radius : 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &--logo {
+            fill: #fff;
+            height: 3.5rem;
+            width: 3.5rem;
+
+            @include respond(phone) {
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+        }
+
+        &--text {
+            color : $color-white;
+            font-size : 3rem;
+        }
+
+    @media(min-width : 1150px) {
+        display : none;
+        }
+    }
+}

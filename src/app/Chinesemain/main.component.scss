@@ -1,0 +1,107 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixin';
+.container {
+    display: grid;
+    grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
+                            minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
+    
+    grid-template-rows: 7rem;
+    grid-row-gap: 1.5rem;
+    overflow: hidden;
+
+    @include respond(tab-port) {
+        grid-template-rows: 4.25rem;
+        grid-row-gap: 0;
+    }
+}
+
+.layout {
+    &--nav {
+        grid-column: 1 / -1;
+    }
+
+    &--menu {
+        position: relative;
+        grid-column: 3 / 9;
+        
+        @include respond(tab-port) {
+            grid-column: 1 / -1;
+            border-radius: 0;
+        }
+    }
+
+    &--footer {
+        grid-column: 1 / -1;
+    }
+}
+
+.menu {
+
+    &__logo {
+        position: absolute;
+        width: 7rem;
+        height: 7rem;
+        top: 3rem;
+        left: 3rem;
+        border-radius: 50%;
+
+        @include respond(tab-port) {
+            width: 8rem;
+            height: 8rem;
+            top: 4.5rem;
+            left: 4.5rem;
+        }
+    
+        @include respond(phone) {
+            width: 5rem;
+            height: 5rem;
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+    }
+
+    &__list {
+        background-image: linear-gradient(rgba($color-white, .7), rgba($color-white, .7)), url('../../assets/imgs/cake7.jpg');
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        border-radius: 15px;
+        list-style: none;
+        text-align: center;
+        margin-bottom: 2rem;
+        
+        @include respond(tab-port) {
+            height: calc(100vh - 4.25rem);
+        }
+    }
+
+    &__item {
+        padding: 1.5rem;
+    }
+
+    &__link:visited, &__link:link {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-grey-dark-2;
+        font-size: 3rem;
+        font-family: $font-nice;
+        font-weight: 400;
+        background-image: linear-gradient(120deg, transparent 50%, $color-grey-dark-2 50%);
+        background-size: 230%;
+        transition: all .8s;
+        padding: 2rem;
+
+        @include respond(phone) {
+            font-size: 4rem;
+            padding: .5rem;
+        }
+    }
+
+    &__link:hover, &__link:active {
+        background-position: 100%;
+        color: $color-white;
+        transform: translateX(1rem);
+        display: inline-block;
+    }
+}

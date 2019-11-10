@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="layout--nav">
+        <app-navbar></app-navbar>
+    </div>
+    <div class="layout--intro">
+        <div class=intro>
+            <h2 class="heading-2 intro__content--start">歐莫四大原則</h2>
+            <div class="intro__content">
+                <img src="../../assets/imgs/omo.png" alt="OMO Logo" class="intro__content--img">
+                <div>
+                    <h4 class="intro__content--title heading-4"><strong>1. 致力於一份簡單，幸福的甜點</strong></h4>
+                    <p class="intro__content--text">每項糕點皆由老闆以及老闆娘親自研發, 靈感來自於他們的日常生活.</p>
+                    <h4 class="intro__content--title heading-4"><strong>2. 親民的價格, 不論是誰都可以享用</strong></h4>
+                    <p class="intro__content--text">鎖定各個階層的族群, 不管你是上班族或學生或夫妻都有專屬於你們的甜點.</p>
+                    <h4 class="intro__content--title heading-4"><strong>3. 堅持用料, 採用當日新鮮食材</strong></h4>
+                    <p class="intro__content--text">不管是水果塔上的水果, 以及珍珠系列產品中的珍珠, 皆是當日現採以及現煮完成的.</p>
+                    <h4 class="intro__content--title heading-4"><strong>4. 舒適的環境, 給顧客" 家 "的感受</strong></h4>
+                    <p class="intro__content--text">歐莫的店內環境採用了居家的設計, 讓顧客隨時都有置身於家的感覺.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="create">
+        <button mat-raised-button color="primary" routerLink="/people/create">Create</button>
+    </div>
+    <div class="layout--people">
+        <div class="people" *ngFor="let person of people">
+            <div>
+                <button mat-button color="primary" (click)="onEdit(person._id)">Edit</button>
+                <button mat-button color="warn" (click)="onDelete(person._id, person.name)">Delete</button>
+            </div>
+            <img [src]="person.image" [alt]="person.position" class="people__img">
+            <h3 class="heading-3 people__position">{{ person.name }}, {{ person.position }}</h3>
+            <p class="people__text">{{ person.text }}</p>
+        </div>
+    </div>
+    <div class="layout--footer">
+        <app-footer></app-footer>
+    </div>
+</div>

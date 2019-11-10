@@ -1,0 +1,160 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/typography.scss';
+@import '../../assets/scss/mixin';
+
+.slideshow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+
+    & li {
+      object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        z-index: 0;
+        animation: imageAnimation 50s linear infinite; 
+
+        &:nth-child(1) {
+            background-image: linear-gradient(rgba($color-grey-light-1, .8), rgba($color-grey-light-1, .8)), url('../../assets/imgs/cake1.jpg');
+        }
+
+        &:nth-child(2) {
+          background-image: linear-gradient(rgba($color-grey-light-1, .8), rgba($color-grey-light-1, .8)), url('../../assets/imgs/cake2.jpg');
+            animation-delay: 10s; 
+        }
+
+        &:nth-child(3) {
+          background-image: linear-gradient(rgba($color-grey-light-1, .8), rgba($color-grey-light-1, .8)), url('../../assets/imgs/cake3.jpg');
+            animation-delay: 20s; 
+        }
+
+        &:nth-child(4) {
+          background-image: linear-gradient(rgba($color-grey-light-1, .8), rgba($color-grey-light-1, .8)), url('../../assets/imgs/cake4.jpg');
+          animation-delay: 30s; 
+        }
+
+        &:nth-child(5) {
+          background-image: linear-gradient(rgba($color-grey-light-1, .8), rgba($color-grey-light-1, .8)), url('../../assets/imgs/cake5.jpg');
+          animation-delay: 40s; 
+      }
+    }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: $font-display;
+  color: $color-white;
+
+  &__title {
+    font-size: 8rem;
+    font-weight: 400;
+    text-align: center;
+
+    @media(max-width: 1315px) {
+      font-size: 5rem;
+    }
+
+    @media(max-width: 655px) {
+      font-size: 3rem;
+    }
+  }
+
+  &__logo {
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: $font-nice;
+    text-align: center;
+
+  }
+
+  &__text {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--text {
+      font-family: $font-nice;
+      font-size: 2rem;
+      color: $color-white;
+      margin-right: 1.5rem;
+      text-align: center;
+    }
+
+    &--ch:visited, &--ch:link {
+      display: block;
+      color: $color-white;
+      font-family: $font-nice;
+      font-size: 2rem;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    &--ch:hover, &--ch:active {
+      transform: translateY(-.8rem);
+      box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.7);
+      padding: 1.5px;
+      border-radius: 5px;
+      background-color: $color-white;
+      color: $color-black;
+    }
+
+    &--eng:visited, &--eng:link {
+      display: block;
+      color: $color-white;
+      font-family: $font-nice;
+      font-size: 2rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    &--eng:hover, &--eng:active {
+      transform: translateY(-.8rem);
+      box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.7);
+      padding: 1.5px;
+      border-radius: 5px;
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+
+}
+
+@keyframes imageAnimation { 
+    0% { 
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+}

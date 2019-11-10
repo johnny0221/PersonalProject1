@@ -1,0 +1,117 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixin';
+
+.container {
+    display: grid;
+    grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
+                            minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
+    
+    grid-template-rows: 7rem;
+    grid-row-gap: 2.5rem;
+}
+
+.layout {
+    
+    &--nav {
+        grid-column: 1 / -1;
+    }
+
+    &--intro {
+        position: relative;
+        grid-column: 2 / 10;
+    }
+
+    &--people {
+        grid-column: 2 / 10;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        grid-gap: 3rem;
+        justify-content: center;
+        padding: 5rem;
+    }
+
+    &--footer {
+        grid-column: 1 / -1;
+    }
+}
+
+.intro {
+    background-image: linear-gradient(rgba($color-white, .9), rgba($color-white, .9)), url('../../../assets/imgs/backgroudn1.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2rem;
+    margin-bottom: 3rem;
+    padding: 5rem;
+
+    &__content {
+        display: flex;
+        justify-content: space-around;
+
+        @include respond(tab-land) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--start {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        &--img {
+            width: 20rem;
+            height: 20rem;
+            align-self: center;
+            border-radius: 50%;
+
+            @include respond(tab-land) {
+                width: 15rem;
+                height: 15rem;
+                margin-bottom: 3rem;
+            }
+        }
+
+        &--title {
+            margin-bottom: 2rem;
+
+            @include respond(tab-land) {
+                text-align: center;
+            }
+        }
+
+        &--text {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+
+            @include respond(tab-land) {
+                text-align: center;
+            }
+        }
+
+    }
+}
+
+.create {
+    grid-column: 2 / 3;
+    text-align: center;
+}
+
+.people {
+    display: grid;
+    justify-items: center;
+
+    &__img {
+        width: 15rem;
+        height: 15rem;
+        margin-bottom: 3rem;
+        border-radius: 50%;
+    }
+
+    &__position {
+        margin-bottom: 3rem;
+    }
+
+    &__text {
+        font-size: 1.3rem;
+    }
+}

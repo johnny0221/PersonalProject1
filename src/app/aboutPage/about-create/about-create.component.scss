@@ -1,0 +1,21 @@
+.container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 5rem;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+button {
+    margin-top: 2rem;
+}
