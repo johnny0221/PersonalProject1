@@ -9,6 +9,7 @@ import { ProductMainComponent } from './Product/product-main/product-main.compon
 import { ProductDrinksComponent } from './Product/product-drinks/product-drinks.component';
 import { ProductDessertsComponent } from './Product/product-desserts/product-desserts.component';
 import { ProductLightMealComponent } from './Product/product-light-meal/product-light-meal.component';
+import { ProductCreateComponent } from './Product/product-create/product-create.component';
 const routes: Routes = [
   { path: '', component: SliderComponent },
   { path: 'chinese', component: MainComponent },
@@ -22,6 +23,9 @@ const routes: Routes = [
       { path: 'desserts', component: ProductDessertsComponent },
       { path: 'lightmeals', component: ProductLightMealComponent }
     ]
+  },
+  {
+    path: 'product/create', component: ProductCreateComponent
   }
 ];
 
