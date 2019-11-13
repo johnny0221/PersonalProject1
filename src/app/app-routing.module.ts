@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: '', component: ProductMainComponent },
       { path: 'drinks', component: ProductDrinksComponent },
       { path: 'desserts', component: ProductDessertsComponent },
-      { path: 'lightmeal', component: ProductLightMealComponent }
+      { path: 'lightmeals', component: ProductLightMealComponent }
     ]
   }
 ];

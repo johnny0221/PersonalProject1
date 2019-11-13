@@ -3,20 +3,20 @@
     <svg class="nav__logo--svg">
       <use xlink:href="../../assets/sprite.svg#cake"></use>
     </svg>
-    <p>歐莫幸福手作</p>
+    <a routerLink="/chinese" class="nav__logo--link">歐莫幸福手做</a>
   </div>
   <ul>
     <li>
       <svg class="nav__item--svg">
         <use xlink:href="../../assets/sprite.svg#book"></use>
       </svg>
-      <a href="#" class="nav__item">關於歐莫</a>
+      <a routerLink="/chinese/about" class="nav__item">關於歐莫</a>
     </li>
     <li>
       <svg class="nav__item--svg">
         <use xlink:href="../../assets/sprite.svg#birthday"></use>
       </svg>
-      <a href="#" class="nav__item">美味菜單</a>
+      <a routerLink="/chinese/product" class="nav__item">美味菜單</a>
     </li>
     <li>
       <svg class="nav__item--svg">
@@ -43,7 +43,7 @@
     <svg class="nav__small--logo" (click)="toggle()">
       <use xlink:href="../../assets/sprite.svg#menu"></use>
     </svg>
-    <p class="nav__small--text">歐莫幸福手作</p>
+    <a routerLink="/chinese" class="nav__small--text">歐莫幸福手作</a>
     <p>&nbsp;</p>
   </div>
   <ul [ngClass]="{active : i}">
@@ -51,13 +51,13 @@
       <svg class="nav__item--svg">
         <use xlink:href="../../assets/sprite.svg#book"></use>
       </svg>
-      <a href="#" class="nav__item">關於歐莫</a>
+      <a routerLink="/chinese/about" class="nav__item">關於歐莫</a>
     </li>
     <li>
       <svg class="nav__item--svg">
         <use xlink:href="../../assets/sprite.svg#birthday"></use>
       </svg>
-      <a href="#" class="nav__item">美味菜單</a>
+      <a routerLink="/chinese/product" class="nav__item">美味菜單</a>
     </li>
     <li>
       <svg class="nav__item--svg">

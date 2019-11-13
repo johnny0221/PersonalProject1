@@ -5,7 +5,7 @@
     grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
                             minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
     
-    grid-template-rows: 7rem;
+    grid-template-rows: 5.5rem;
     grid-row-gap: 1.5rem;
     overflow: hidden;
 
@@ -68,7 +68,6 @@
         border-radius: 15px;
         list-style: none;
         text-align: center;
-        margin-bottom: 2rem;
         
         @include respond(tab-port) {
             height: calc(100vh - 4.25rem);

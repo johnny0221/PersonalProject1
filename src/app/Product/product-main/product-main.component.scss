@@ -1,0 +1,74 @@
+@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/typography.scss';
+
+.container {
+    display: flex;
+    
+
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    @media only screen and (max-width: 750px) {
+        flex-direction: column-reverse !important;
+        align-items: center;
+    }
+}
+
+.product {
+
+    width: calc(100% * 5/12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
+    @media only screen and (max-width: 750px) {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+    }
+
+    &__text {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+
+    &__btn:visited, &__btn:link {
+        padding: 1rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+        border-bottom: 1px dotted $color-grey-light-1;
+        cursor: pointer;
+        color: $color-grey-dark-1;
+        background-image: linear-gradient(to right, transparent 50%, $color-grey-dark-1 50%);
+        background-size: 200%;
+        transition: all .5s;
+    }
+
+    &__btn:hover, &__btn:active {
+        color: $color-white;
+        background-position: 100%;
+    }
+
+    &__image {
+        width: calc(100%*7/12);
+        height: 100%;
+
+        @media only screen and (max-width: 750px) {
+            width: 100%;
+        }
+    }
+}
+
+hr {
+    width: 120%;
+    border-bottom: solid 1px #a5a8aa;
+    margin-bottom: 2rem;
+}

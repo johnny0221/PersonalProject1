@@ -60,6 +60,11 @@
             height: 3.5rem;
             width: 3.5rem;
         }
+
+        &--link:visited, &--link:link {
+            color: $color-white;
+            text-decoration: none;
+        }
     }
 
     &__item--svg {
@@ -121,6 +126,7 @@
 
                 & a {
                     justify-self: start;
+                    
                 }
             }
         }
@@ -150,6 +156,7 @@
         &--text {
             color : $color-white;
             font-size : 3rem;
+            text-decoration: none;
         }
 
     @media(min-width : 1150px) {
