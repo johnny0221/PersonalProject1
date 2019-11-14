@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const People = require('./models/people');
+const Product = require('./models/product');
 
 mongoose.connect("mongodb+srv://johnny:Aa00850221@cluster0-yzadz.mongodb.net/OMO?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -32,6 +33,8 @@ app.use((req, res, next) => {
     next();
 })
 
+
+//CRUD People Start
 app.get('/people', (req, res) => {
     People.find()
         .then(
@@ -115,6 +118,39 @@ app.delete('/people/:id', (req, res) => {
                 message: 'fetching failed'
             });
         });
+});
+
+//CRUD People End
+
+//CRUD Product Start
+app.post('/product', (req, res) => {
+    const newProduct = new Product(
+        {
+            name: req.body.name,
+            type: req.body.type,
+            image: req.body.imageUrl,
+            calory: req.body.calory,
+            price: req.body.price,
+            likes: 0,
+            ingredients: req.body.ingredients,
+            description: req.body.description
+        }
+    );
+    newProduct.save()
+        .then(
+            (result) => {
+                res.status(200).json({
+                    message: 'successfully added a product'
+                })
+            }
+        )
+        .catch(
+            (error) => {
+                res.status(401).json({
+                    message: 'something goes wrong, adding product failed'
+                })
+            }
+        )
 });
 
 module.exports = app;

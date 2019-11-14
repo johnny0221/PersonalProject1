@@ -18,6 +18,7 @@ import { ProductDessertsComponent } from './Product/product-desserts/product-des
 import { ProductLightMealComponent } from './Product/product-light-meal/product-light-meal.component';
 import { ProductComponent } from './Product/product/product.component';
 import { ProductCreateComponent } from './Product/product-create/product-create.component';
+import { ProductCardComponent } from './Product/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProductCreateComponent } from './Product/product-create/product-create.
     ProductLightMealComponent,
     ProductComponent,
     ProductCreateComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,40 @@
-<p>product-create works!</p>
+<mat-card class="container">
+    <h3 class="heading-3 title">{{ isEditMode ? "編輯員工" : "創建員工"}}</h3>
+    <form action="" [formGroup]="form" (ngSubmit)="onAdd()">
+        <mat-form-field>
+            <input matInput type="text" formControlName="name" name="name" placeholder="商品名稱">
+            <mat-error *ngIf="form.get('name').invalid">請輸入商品名稱</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="imageUrl" name="imageUrl" placeholder="商品相片Url">
+            <mat-error *ngIf="form.get('imageUrl').invalid">請輸入相片Url</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select formControlName="type" name="type" placeholder="商品類型">
+                <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('type').invalid">請輸入商品類型</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" formControlName="price" name="price" placeholder="商品售價">
+            <mat-error *ngIf="form.get('price').invalid">請輸入商品售價</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" formControlName="calory" name="calory" placeholder="商品熱量">
+            <mat-error *ngIf="form.get('calory').invalid">請輸入商品熱量</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select formControlName="ingredient" name="ingredient" placeholder="商品材料" multiple>
+                <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ingredient}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('type').invalid">請輸入至少一項商品材料</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea rows=4 matInput type="text" formControlName="description" name="description"
+                placeholder="商品敘述"></textarea>
+            <mat-error *ngIf="form.get('description').invalid">請輸入商品敘述</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit"
+            [disabled]="form.invalid">{{ isEditMode? '編輯' : '儲存'}}</button>
+    </form>
+</mat-card>
