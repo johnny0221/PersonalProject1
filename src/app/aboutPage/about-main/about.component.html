@@ -21,13 +21,16 @@
         </div>
     </div>
     <div class="create">
-        <button mat-raised-button color="primary" routerLink="/people/create">Create</button>
+        <button *ngIf="checkAdminStatus | async" mat-raised-button color="primary"
+            routerLink="/people/create">Create</button>
     </div>
     <div class="layout--people">
         <div class="people" *ngFor="let person of people">
             <div>
-                <button mat-button color="primary" (click)="onEdit(person._id)">Edit</button>
-                <button mat-button color="warn" (click)="onDelete(person._id, person.name)">Delete</button>
+                <button *ngIf="checkAdminStatus | async" mat-button color="primary"
+                    (click)="onEdit(person._id)">Edit</button>
+                <button *ngIf="checkAdminStatus | async" mat-button color="warn"
+                    (click)="onDelete(person._id, person.name)">Delete</button>
             </div>
             <img [src]="person.image" [alt]="person.position" class="people__img">
             <h3 class="heading-3 people__position">{{ person.name }}, {{ person.position }}</h3>

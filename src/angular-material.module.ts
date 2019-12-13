@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatCardModule, MatDialogModule, MatSelectModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatCardModule, MatDialogModule, MatSelectModule, MatListModule, } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     imports: [
@@ -10,7 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatCardModule,
         MatDialogModule,
         MatSelectModule,
-        MatListModule
+        MatListModule,
+        MatExpansionModule,
+        MatPaginatorModule
     ],
     exports: [
         BrowserAnimationsModule,
@@ -19,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatCardModule,
         MatDialogModule,
         MatSelectModule,
-        MatListModule
+        MatListModule,
+        MatExpansionModule,
+        MatPaginatorModule
     ]
 })
 export class AngularMaterialModule {

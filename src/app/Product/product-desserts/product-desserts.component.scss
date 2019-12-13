@@ -1,7 +1,30 @@
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
     grid-gap: 3rem;
     justify-content: center;
     padding: 5rem;
+
+    @media(max-width : 970px) {
+        padding: 5rem 10rem;
+    }
+}
+
+.catalog {
+    &__item {
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+        font-size: 1.4rem;
+        outline: none;
+    }
+}
+
+.link:visited, .link:link {
+    transition: all .3s;
+}
+
+.link:hover, .link:active {
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-.2rem);
 }

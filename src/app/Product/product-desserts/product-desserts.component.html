@@ -1,6 +1,10 @@
+<div>
+    <a routerLink="/chinese" class="catalog__item link"> 目錄 </a>
+    <span> > </span>
+    <a routerLink="/chinese/product" class="catalog__item link"> 美味菜單 </a>
+    <span> > </span>
+    <span class="catalog__item"> {{ routeLink}}</span>
+</div>
 <div class="grid">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+    <app-product-card *ngFor="let product of dessertInfo" [product]="product"></app-product-card>
 </div>

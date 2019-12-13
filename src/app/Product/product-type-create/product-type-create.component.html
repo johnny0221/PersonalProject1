@@ -1,0 +1,15 @@
+<div class="container">
+    <h3 class="heading-3 title">創建材料</h3>
+    <button mat-raised-button color="accent" (click)="onAddIngredient()">Add Ingredient</button>
+    <form action="" [formGroup]="form" (ngSubmit)="onSave()">
+        <div formArrayName="ingredients">
+            <div *ngFor="let ingredient of getControls(); let i = index;" [formGroupName]="i">
+                <mat-form-field>
+                    <input matInput type="text" placeholder="商品名稱" formControlName="name">
+                    <button mat-button color="warn" (click)="deleteIngredient(i)" class="delete">X</button>
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-raised-button color="accent" type="submit">Save</button>
+    </form>
+</div>

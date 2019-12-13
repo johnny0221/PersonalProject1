@@ -1,16 +1,29 @@
+<div class="button">
+    <button *ngIf="checkAdminStatus | async" mat-button color="primary" (click)="onEdit(product.id)">Edit</button>
+    <button *ngIf="checkAdminStatus | async" mat-button color="warn"
+        (click)="onDelete(product.id, product.name)">Delete</button>
+</div>
 <div class="card">
     <div class="card__side card__side--front">
-        <img src="../../../assets/imgs/cake1.jpg" alt="image" class="card__image">
-        <div class="card__title">Title</div>
-        <ul class="card__ingredients">
-            <li class="card__ingredient"></li>
-        </ul>
-        <div class="card__description">Lorem ipsum dolor sit amet.</div>
-        <div class="card__love">
+        <img [src]="product.imageUrl" alt="image" class="card__image">
+        <div class="card__title">{{ product.name }}</div>
+        <!-- <div class="card__love">
             <svg class="card__love--icon">
                 <use xlink:href="../../assets/sprite1.svg#heart"></use>
             </svg>
             <p class="card__love--count">10</p>
+        </div> -->
+        <div class="btn__center">
+            <button (click)="toItem(product.id)" class="btn btn__phone">了解更多 &rarr;</button>
+        </div>
+    </div>
+    <div class="card__side card__side--back">
+        <div class="card__ingredients">
+            <div class="card__title--back">使用材料</div>
+            <li class="card__ingredient" *ngFor="let ingredient of product.ingredients">{{ ingredient }}</li>
+        </div>
+        <div class="card__btn">
+            <button (click)="toItem(product.id)" class="btn">了解更多 &rarr;</button>
         </div>
     </div>
 </div>

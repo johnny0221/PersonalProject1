@@ -1,5 +1,5 @@
 <mat-card class="container">
-    <h3 class="heading-3 title">{{ isEditMode ? "編輯員工" : "創建員工"}}</h3>
+    <h3 class="heading-3 title">{{ isEditMode ? "編輯商品" : "創建商品"}}</h3>
     <form action="" [formGroup]="form" (ngSubmit)="onAdd()">
         <mat-form-field>
             <input matInput type="text" formControlName="name" name="name" placeholder="商品名稱">

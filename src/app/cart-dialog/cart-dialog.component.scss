@@ -1,0 +1,34 @@
+.mat-dialog-title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mat-dialog-content {
+    font-size: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+
+    @media(max-width: 400px) {
+        font-size: .8rem;
+    }
+}
+
+.mat-dialog-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-1 {
+    font-size: 1.3rem;
+}
+
+.btn-2 {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+.mat-dialog-actions .mat-button-base+.mat-button-base {
+    margin-left: 0;
+}
+

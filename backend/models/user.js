@@ -4,22 +4,18 @@ const userSchema = new mongoose.Schema({
     name: { type: String, unique: true, required: true },
     password: String,
     email: String,
-    firstName: String,
-    LastName: String,
-    avatar: String,
     likedproducts: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "product"
+            ref: "Product"
         }
     ],
     cart: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "product"
+            ref: "Product"
         }
-    ],
-    isadmin: { type: Boolean, default: false }
+    ]
 });
 
 module.exports = mongoose.model("User", userSchema);

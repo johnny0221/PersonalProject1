@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const productSchema = mongoose.Schema({
     name: { type: String, unique: true, required: true },
     type: String,
-    image: String,
+    imageUrl: String,
     price: Number,
     calory: Number,
-    likes: Number,
+    likes: {
+        type: Number,
+        default: 0
+    },
     ingredients: [
         {
             type: String
@@ -15,16 +18,20 @@ const productSchema = mongoose.Schema({
     alsoLike: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'product'
+            ref: 'Product'
         }
     ],
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'comment'
+            ref: 'Comment'
         }
     ],
-    description: String
+    description: String,
+    creator: {
+        type: String,
+        default: 'admin'
+    }
 });
 
 module.exports = mongoose.model('Product', productSchema);

@@ -1,0 +1,58 @@
+<section class="product">
+    <div class="product__intro">
+        <img [src]="productDetail.imageUrl" alt="cake2" class="product__intro--img">
+        <div class="product__intro--detail">
+            <p class="product__title">商品名稱 : {{ productDetail.name }} / {{ productDetail.calory}}cal</p>
+            <p class="product__text">商品描述 : {{ productDetail.description }}</p>
+
+            <p class="product__text">商品價格 : NTD$ {{ productDetail.price }}</p>
+            <div class="product__accessory">
+                <!-- <button mat-raised-button color="accent" class="mg-small">
+                    <svg class="svg">
+                        <use xlink:href="../../assets/sprite1.svg#heart"></use>
+                    </svg>
+                    Love
+                </button> -->
+                <button mat-raised-button color="warn" (click)="addToShoppingCart()">
+                    <svg class="svg">
+                        <use xlink:href="../../assets/sprite3.svg#supermarket"></use>
+                    </svg>
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="comment">
+    <h2 class="title">Comments</h2>
+    <button mat-raised-button color="accent" (click)="addComments()" *ngIf="userId">
+        新增評論
+    </button>
+    <mat-card *ngFor="let comment of comments">
+        <div class="comment__detail">
+            <p class="product__text">{{ comment.createdBy }}</p>
+            <p class="product__text">{{ comment.createdAt }}</p>
+        </div>
+        <div class="comment__bottom">
+            <p class="comment__description">{{ comment.text }}</p>
+            <button mat-button color="warn" *ngIf="userId === comment.author || isAdmin"
+                (click)="onDelete(comment._id)">Delete</button>
+        </div>
+    </mat-card>
+    <mat-paginator [length]="totalComments" [pageIndex]="pageIndex" [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)"></mat-paginator>
+</section>
+<section class="alsolike">
+    <h2 class="title">You May Also Like</h2>
+    <div class="relate">
+        <mat-card class="relate__card" *ngFor="let product of productDetail.alsoLike">
+            <img [src]="product.imageUrl" alt="alsoLike" class="relate__img">
+            <div class="relate__detail">
+                <p class="product__text">{{ product.name }}</p>
+                <button mat-raised-button color="primary" class="btn" (click)="toProductPage(product._id)">
+                    know more
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</section>

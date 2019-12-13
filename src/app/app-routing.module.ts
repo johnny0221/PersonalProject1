@@ -6,10 +6,13 @@ import { AboutComponent } from './aboutPage/about-main/about.component';
 import { AboutCreateComponent } from './aboutPage/about-create/about-create.component';
 import { ProductComponent } from './Product/product/product.component';
 import { ProductMainComponent } from './Product/product-main/product-main.component';
-import { ProductDrinksComponent } from './Product/product-drinks/product-drinks.component';
 import { ProductDessertsComponent } from './Product/product-desserts/product-desserts.component';
-import { ProductLightMealComponent } from './Product/product-light-meal/product-light-meal.component';
 import { ProductCreateComponent } from './Product/product-create/product-create.component';
+import { ProductTypeCreateComponent } from './Product/product-type-create/product-type-create.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductItemComponent } from './Product/product-item/product-item.component';
 const routes: Routes = [
   { path: '', component: SliderComponent },
   { path: 'chinese', component: MainComponent },
@@ -19,14 +22,20 @@ const routes: Routes = [
   {
     path: 'chinese/product', component: ProductComponent, children: [
       { path: '', component: ProductMainComponent },
-      { path: 'drinks', component: ProductDrinksComponent },
+      { path: 'drinks', component: ProductDessertsComponent },
       { path: 'desserts', component: ProductDessertsComponent },
-      { path: 'lightmeals', component: ProductLightMealComponent }
+      { path: 'lightmeals', component: ProductDessertsComponent },
+      { path: ':id', component: ProductItemComponent }
     ]
   },
   {
     path: 'product/create', component: ProductCreateComponent
-  }
+  },
+  { path: 'product/:id/edit', component: ProductCreateComponent },
+  { path: 'ingredient/create', component: ProductTypeCreateComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: ':id/cart', component: ShoppingCartComponent },
 ];
 
 @NgModule({

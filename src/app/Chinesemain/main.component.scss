@@ -2,8 +2,8 @@
 @import '../../assets/scss/mixin';
 .container {
     display: grid;
-    grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
-                            minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
+    grid-template-columns: [full-start] minmax(1rem, 1fr) [center-start] repeat(4, [col-start] 
+                            minmax(min-content, 20rem) [col-end] ) [center-end] minmax(1rem, 1fr) [full-end];
     
     grid-template-rows: 5.5rem;
     grid-row-gap: 1.5rem;
@@ -15,19 +15,21 @@
     }
 }
 
+@keyframes moveFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(10rem); }
+    100% {
+      opacity: 1;
+      transform: translate(0); } }
+
 .layout {
     &--nav {
         grid-column: 1 / -1;
     }
 
-    &--menu {
-        position: relative;
-        grid-column: 3 / 9;
-        
-        @include respond(tab-port) {
-            grid-column: 1 / -1;
-            border-radius: 0;
-        }
+    &--content {
+        grid-column: 2 / 6;
     }
 
     &--footer {
@@ -35,72 +37,185 @@
     }
 }
 
-.menu {
+.one {
+    animation: moveFromBottom 1s ease-in;
+}
 
-    &__logo {
-        position: absolute;
-        width: 7rem;
-        height: 7rem;
-        top: 3rem;
-        left: 3rem;
-        border-radius: 50%;
+.two {
+    animation: moveFromBottom 1s ease-in;
+}
 
-        @include respond(tab-port) {
-            width: 8rem;
-            height: 8rem;
-            top: 4.5rem;
-            left: 4.5rem;
+.title {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.btn-center {
+    text-align: center;
+    margin: 5rem auto;
+}
+
+.btn-general:visited, .btn-general:link {
+    font-size: 1.5rem;
+    color: $color-grey-dark-2;
+    padding: 1rem;
+    text-decoration: none;
+    background-size: 200%;
+    background-image: linear-gradient(to right, $color-white 50%, $color-grey-dark-2 50%);
+    border-radius: 5px;
+    transition: all .5s;
+}
+
+.btn-general:hover, .btn-general:active {
+    color: $color-white;
+    background-color: $color-grey-dark-2;
+    background-position: 100%;
+}
+
+.btn-general {
+    font-size: 1.5rem;
+    color: $color-grey-dark-2;
+    padding: 1rem;
+    text-decoration: none;
+    background-size: 200%;
+    background-image: linear-gradient(to right, $color-white 50%, $color-grey-dark-2 50%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.content {
+
+    &__welcome {
+
+        &--user {
+            font-size: 3rem;
         }
-    
-        @include respond(phone) {
-            width: 5rem;
-            height: 5rem;
-            top: 1.5rem;
-            left: 1.5rem;
+
+        &--explore {
+            font-size: 2rem;
         }
     }
 
-    &__list {
-        background-image: linear-gradient(rgba($color-white, .7), rgba($color-white, .7)), url('../../assets/imgs/cake7.jpg');
-        background-size: cover;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        border-radius: 15px;
-        list-style: none;
-        text-align: center;
-        
-        @include respond(tab-port) {
-            height: calc(100vh - 4.25rem);
-        }
+    &__intro {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-gap: 4.5rem;
+        align-items: center;
+        justify-items: center;
     }
 
-    &__item {
-        padding: 1.5rem;
+    &__product {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 4rem;
+    }
+}
+
+//feature section
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap: 2rem;
+    color: $color-grey-dark-2;
+   
+    &__icon {
+        fill: $color-grey-dark-2;
+        width: 5rem;
+        height: 5rem;
     }
 
-    &__link:visited, &__link:link {
-        display: inline-block;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: $color-grey-dark-2;
+    &__title {
         font-size: 3rem;
-        font-family: $font-nice;
-        font-weight: 400;
-        background-image: linear-gradient(120deg, transparent 50%, $color-grey-dark-2 50%);
-        background-size: 230%;
-        transition: all .8s;
-        padding: 2rem;
+        color: inherit;
+        justify-self: center;
+        align-self: center;
+    }
 
-        @include respond(phone) {
-            font-size: 4rem;
-            padding: .5rem;
+    &__content {
+        grid-column: 1 / 3;
+        font-size: 1.5rem;
+        color: inherit;
+    }
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    &__image {
+        width: 15vw;
+        height: 30vh;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+
+        @media(max-width : 1200px) {
+            width: 40vw;
+            height: 30vh;
+        }
+
+        @media(max-width : 900px) {
+            width: 50vw;
+            height: 30vh;
+        }
+
+        @media(max-width : 600px) {
+            width: 60vw;
+            height: 30vh;
         }
     }
 
-    &__link:hover, &__link:active {
-        background-position: 100%;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--name {
+            font-size: 2rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+            
+        }
+
+        &--cal {
+            font-size: 1.7rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+        }
+
+        &--price {
+            font-size: 1.7rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+        }
+
+    }
+
+    &__button {
+        margin-top: 1.5rem;
+        padding: .8rem;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: $color-grey-dark-2;
         color: $color-white;
-        transform: translateX(1rem);
-        display: inline-block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.cart {
+
+    &__text {
+        font-size: 1.8rem;
+        text-align: center;                                   
+    }
+}
+
+.margin-right {
+    @media(max-width : 676px) {
+      margin-right: 2rem;
     }
 }

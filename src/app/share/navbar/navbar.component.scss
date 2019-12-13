@@ -74,6 +74,7 @@
     }
 
     &__item:visited, &__item:link {
+        cursor: pointer;
         text-decoration: none;
         color: white;
     }

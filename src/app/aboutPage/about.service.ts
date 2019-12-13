@@ -14,6 +14,7 @@ export class aboutService {
 
     getPeople() {
         this.http.get<{ data: peopleModel[] }>("http://localhost:3000/people").subscribe((people) => {
+            console.log(people);
             this.people = people.data;
             this.peopleData.next([...this.people]);
         })

@@ -1,0 +1,150 @@
+@import '../../../assets/scss/variables.scss';
+.product {
+
+    margin-bottom: 3rem;
+
+    &__title {
+        font-size: 3.5rem;
+    }
+
+    &__text {
+        font-size: 2rem;
+        margin-top: 2rem;
+
+        @media(max-width : 600px) {
+            
+        }
+    }
+
+    &__intro {
+        display: flex;
+        justify-content: space-between;
+
+        @media(max-width : 600px) {
+            flex-direction: column;
+        }
+        
+        
+        &--img {
+            width: 30vw;
+            height: 50vh;
+
+            @media(max-width : 600px) {
+                width: 70%;
+                height: 30vh;
+                align-self: center;
+                margin-bottom: 4rem;
+            }
+        }
+
+        &--detail {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+
+    &__accessory {
+        display: flex;
+        justify-content: space-around;
+
+        @media(max-width : 600px) {
+            margin: 4rem 0 2rem 0;
+        }
+
+        @media(max-width : 400px) {
+            flex-direction: column;
+        }
+    }
+
+}
+
+.comment {
+
+  &__detail {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+  }
+
+  &__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  &__description {
+      font-size: 1.3rem;
+  }
+
+}
+
+.relate {
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width : 750px) {
+        flex-direction: column;
+    }
+
+    &__img {
+        width: 10rem;;
+        height: 10rem;
+    }
+
+    &__detail {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__card {
+        width: 45%;
+        display: flex;
+        justify-content: space-between;
+
+        @media(max-width : 750px) {
+            width: 100%;
+        }
+    }
+
+}
+
+mat-card {
+    margin-bottom: 1rem;
+}
+
+.svg {
+    margin-right: .5rem;
+    fill: white;
+    width: 2rem;
+    height: 2rem;
+}
+
+.title {
+    margin: 2rem 0;
+    font-size: 3rem;
+    color: $color-grey-dark-2;
+}
+
+.btn {
+    width: 70%;
+    border-radius: 10rem;
+
+    @media(max-width : 400px) {
+        width: 93%;
+    }
+}
+
+.mg-small {
+    
+
+    @media(max-width : 400px) {
+        margin-bottom: 2rem;
+    }
+}

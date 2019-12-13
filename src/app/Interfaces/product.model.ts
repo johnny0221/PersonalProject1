@@ -5,5 +5,5 @@ export interface ProductModel {
     calory: number,
     imageUrl: string,
     description: string,
-    ingredients: string[]
+    ingredients: string[],
 }

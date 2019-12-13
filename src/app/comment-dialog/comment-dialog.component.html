@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="heading-4">想對這項商品說甚麼呢？</h1>
+<form [formGroup]="form">
+    <mat-form-field>
+        <textarea matInput placeholder="Leave a Comment" name="comment" formControlName="comment"></textarea>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="this.form.get('comment').value">確認</button>
+        <button mat-button (click)="onNoClick()">取消</button>
+    </div>
+</form>

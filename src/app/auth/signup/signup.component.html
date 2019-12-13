@@ -1,0 +1,33 @@
+<div class="background">
+    <div class="container">
+        <div class="logo">
+            <a routerLink="/chinese"><img src="../../../assets/imgs/omo.png" alt="logo" class="logo__size"></a>
+        </div>
+        <p class="title">創建會員</p>
+        <form action="" [formGroup]="form" (ngSubmit)="onAdd()" class="form">
+            <label for="name" class=form__label>使用者名稱</label>
+            <p class="form__error" *ngIf="form.get('name').invalid && !form.get('name').pristine">請至少輸入三個字以上的使用者名稱</p>
+            <p class="form__error" *ngIf="duplicateName === true && !form.get('name').invalid">此使用者已被使用！</p>
+            <p class="form__ok" *ngIf="duplicateName === false && !form.get('name').invalid">此使用者名稱可以使用！</p>
+            <input type="text" id="name" class="form__input" formControlName="name" name="name" #input>
+            <label for="email" class=form__label>電子郵件</label>
+            <p class="form__error" *ngIf="form.get('email').invalid && !form.get('email').pristine">請輸入正確的電子郵件</p>
+            <input type="text" id="email" class="form__input" formControlName="email" name="email">
+            <label for="password" class=form__label>輸入密碼</label>
+            <p class="form__error" *ngIf="form.get('password').invalid && !form.get('password').pristine">
+                請輸入至少八位數以上的密碼（包含一個英文大寫字母和一個數字）</p>
+            <input type="password" id="password" class="form__input" formControlName="password" name="password">
+            <label for="confirm" class=form__label>確認密碼</label>
+            <p class="form__error" *ngIf="form.get('confirm').invalid && !form.get('confirm').pristine">
+                請輸入至少八位數以上的密碼（包含一個英文大寫字母和一個數字）</p>
+            <p class="form__error" *ngIf="form.errors">
+                密碼與上述不符
+            </p>
+            <input type="password" id="confirm" class="form__input" formControlName="confirm" name="confirm">
+            <div class="center">
+                <button mat-raised-button color="warn" type="submit"
+                    [disabled]="form.invalid || duplicateName === true">確認</button>
+            </div>
+        </form>
+    </div>
+</div>

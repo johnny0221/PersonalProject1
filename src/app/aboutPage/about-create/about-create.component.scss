@@ -5,6 +5,10 @@
     transform: translate(-50%, -50%);
     width: 30%;
     padding: 5rem;
+
+    @media(max-width : 900px) {
+        width: 100%; 
+    }
 }
 
 .title {

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ProductModel } from '../../Interfaces/product.model';
 import { ProductService } from '../product.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,16 +13,19 @@ import { ProductService } from '../product.service';
 })
 export class ProductCreateComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
+  isEditMode = false;
+  productId: string;
   form: FormGroup;
-  types: string[] = ['drink', 'dessert', 'lightmeal'];
-  ingredients: string[] = ['巧克力', '草莓', '奶油', '鮮奶油'];
+  types: string[] = ['drinks', 'desserts', 'lightmeals'];
+  ingredients: string[];
+  IngredientSub: Subscription;
 
   createForm() {
     this.form = new FormGroup({
       'name': new FormControl(null, { validators: [Validators.required] }),
-      'type': new FormControl('coffee', { validators: [Validators.required] }),
+      'type': new FormControl(null, { validators: [Validators.required] }),
       'price': new FormControl(null, { validators: [Validators.required] }),
       'calory': new FormControl(null, { validators: [Validators.required] }),
       'imageUrl': new FormControl(null, { validators: [Validators.required] }),
@@ -32,6 +36,36 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.IngredientSub = this.productService.getIngredient().subscribe((data) => {
+      this.ingredients = [...data.ingredients];
+    })
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.isEditMode = true;
+        this.productId = paramMap.get('id');
+        this.productService.getTargetProduct(this.productId)
+        this.productService.TargetProductSubListener().subscribe((data) => {
+          const targetProduct = {
+            name: data.data.name,
+            type: data.data.type,
+            price: data.data.price,
+            calory: data.data.calory,
+            imageUrl: data.data.imageUrl,
+            description: data.data.description,
+            ingredient: data.data.ingredients
+          }
+          this.form.setValue({
+            name: targetProduct.name,
+            type: targetProduct.type,
+            price: targetProduct.price,
+            calory: targetProduct.calory,
+            imageUrl: targetProduct.imageUrl,
+            description: targetProduct.description,
+            ingredient: targetProduct.ingredient
+          });
+        });
+      }
+    });
   }
 
   onAdd() {
@@ -52,9 +86,16 @@ export class ProductCreateComponent implements OnInit {
       description: description,
       ingredients: ingredients,
     }
+    if (this.isEditMode) {
+      this.productService.updateTargetProduct(this.productId, productInfo);
+    } else {
+      this.productService.createProduct(productInfo);
+    }
 
-    this.productService.createProduct(productInfo);
+  }
 
+  ngOnDestroy() {
+    this.IngredientSub.unsubscribe();
   }
 
 }
