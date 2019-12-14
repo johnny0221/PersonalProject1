@@ -13,6 +13,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductItemComponent } from './Product/product-item/product-item.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 const routes: Routes = [
   { path: '', component: SliderComponent },
   { path: 'chinese', component: MainComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: ':id/cart', component: ShoppingCartComponent },
+  { path: 'contact', component: ContactPageComponent }
 ];
 
 @NgModule({

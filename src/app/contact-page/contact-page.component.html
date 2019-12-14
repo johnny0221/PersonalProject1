@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="layout--nav">
+        <app-navbar></app-navbar>
+    </div>
+    <div class="layout--contact">
+        <div class="left">
+            <div class="left__content">
+                <div class="left__content--item">
+                    <svg class="item__icon">
+                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                    </svg>
+                    <p class="item__title">地址</p>
+                    <p class="item__content">桃園市桃園區龍安街161號</p>
+                </div>
+                <div class="left__content--item">
+                    <svg class="item__icon">
+                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                    </svg>
+                    <p class="item__title">電話</p>
+                    <p class="item__content">0900- 637 081</p>
+                </div>
+                <div class="left__content--item">
+                    <svg class="item__icon">
+                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                    </svg>
+                    <p class="item__title">粉絲專頁</p>
+                    <a href="https://www.facebook.com/omohappinesshandmade/" class="item__content">FaceBook</a>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <p class="right__title">Send us some message</p>
+            <form action="" class = "right__form">
+                <div class = "namearea">
+                    <div>
+                        <label for="email" class=right__form--label>姓氏</label>
+                        <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
+                    </div>
+                    <div>
+                        <label for="email" class=right__form--label>姓氏</label>
+                        <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
+                    </div>
+                </div>
+                <label for="email" class=right__form--label>電子郵件</label>
+                <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
+                <label for="email" class=right__form--label>想對我們說甚麼？</label>
+                <textarea name="" id="" cols="60" rows="10"></textarea>
+
+                <div class="right__btn">
+                    <button class = "btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="layout--footer">
+        <app-footer></app-footer>
+    </div>
+</div>

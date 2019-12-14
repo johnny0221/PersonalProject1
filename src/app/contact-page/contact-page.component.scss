@@ -1,0 +1,133 @@
+@import '../../assets/scss/variables.scss';
+
+.container {
+    display: grid;
+    grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
+                            minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
+    
+    grid-template-rows: 5.5rem;
+    grid-row-gap: 2.5rem;
+}
+
+.layout {
+    &--nav {
+        grid-column: 1 / -1;
+    }
+
+    &--contact {
+        grid-column: 2 / 10;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 5rem 0;
+        box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+    }
+
+    &--footer {
+        grid-column: 1 / -1;
+    }
+}
+
+.left {
+    position: relative;
+    grid-column: 1 / 2;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%), url("https://images.pexels.com/photos/1550341/pexels-photo-1550341.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        
+        display: flex;
+        flex-direction: column;
+        
+        &--item {
+            margin-left: 30%;
+            display: grid;
+            grid-template-columns: max-content max-content;
+            grid-gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.right {
+    grid-column: 2 / 3;
+    
+
+    &__title {
+        text-align: center;
+        font-size: 2rem;
+        color: $color-grey-dark-2;
+        margin-top: 2rem;
+    }
+
+    &__form {
+        margin: 2rem auto;
+        width: 80%;
+
+        &--label {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: $color-grey-dark-2;
+        }
+
+        &--input {
+            width: 100%;
+            font-size: 1.5rem;
+            border: 1px solid #ccc;
+            padding: .5rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__btn {
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+}
+
+.item {
+    
+    &__icon {
+        fill: white;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    &__content {
+        grid-column: 2 / 3;
+        font-size: 1.3rem;
+        color: white;
+    }
+}
+
+.namearea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: $color-grey-dark-2;
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+    color: white;
+}

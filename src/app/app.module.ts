@@ -27,6 +27,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductItemComponent } from './Product/product-item/product-item.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
     ProductItemComponent,
     CommentDialogComponent,
     CartDialogComponent,
+    ContactPageComponent,
   ],
   imports: [
     BrowserModule,
