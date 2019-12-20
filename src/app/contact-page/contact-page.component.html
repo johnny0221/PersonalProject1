@@ -7,21 +7,21 @@
             <div class="left__content">
                 <div class="left__content--item">
                     <svg class="item__icon">
-                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                        <use xlink:href="../../assets/sprite3.svg#pin"></use>
                     </svg>
                     <p class="item__title">地址</p>
                     <p class="item__content">桃園市桃園區龍安街161號</p>
                 </div>
                 <div class="left__content--item">
                     <svg class="item__icon">
-                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                        <use xlink:href="../../assets/sprite.svg#phone"></use>
                     </svg>
                     <p class="item__title">電話</p>
                     <p class="item__content">0900- 637 081</p>
                 </div>
                 <div class="left__content--item">
                     <svg class="item__icon">
-                        <use xlink:href="../../assets/sprite3.svg#money"></use>
+                        <use xlink:href="../../assets/sprite3.svg#facebook"></use>
                     </svg>
                     <p class="item__title">粉絲專頁</p>
                     <a href="https://www.facebook.com/omohappinesshandmade/" class="item__content">FaceBook</a>
@@ -30,24 +30,29 @@
         </div>
         <div class="right">
             <p class="right__title">Send us some message</p>
-            <form action="" class = "right__form">
-                <div class = "namearea">
+            <form class="right__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="namearea">
                     <div>
                         <label for="email" class=right__form--label>姓氏</label>
-                        <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
+                        <input type="text" id="email" class="right__form--input" formControlName="lastName"
+                            name="lastName">
                     </div>
                     <div>
-                        <label for="email" class=right__form--label>姓氏</label>
-                        <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
+                        <label for="email" class=right__form--label>名字</label>
+                        <input type="text" id="email" class="right__form--input" formControlName="firstName"
+                            name="firstName">
                     </div>
                 </div>
                 <label for="email" class=right__form--label>電子郵件</label>
+                <p class="error" *ngIf="form.get('email').invalid && !form.get('email').pristine">請輸入正確的電子郵件</p>
                 <input type="text" id="email" class="right__form--input" formControlName="email" name="email">
                 <label for="email" class=right__form--label>想對我們說甚麼？</label>
-                <textarea name="" id="" cols="60" rows="10"></textarea>
+                <p class="error" *ngIf="form.get('description').invalid && !form.get('description').pristine">請輸入內容</p>
+                <textarea name="" id="" cols="60" rows="10" class="right__form--input" formControlName="description"
+                    name="description"></textarea>
 
                 <div class="right__btn">
-                    <button class = "btn">Send Message</button>
+                    <button mat-raised-button color="accent" [disabled]="form.invalid">Send Message</button>
                 </div>
             </form>
         </div>

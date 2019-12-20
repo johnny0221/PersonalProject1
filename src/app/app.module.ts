@@ -28,6 +28,8 @@ import { ProductItemComponent } from './Product/product-item/product-item.compon
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { ForgetComponent } from './forget/forget.component';
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     CommentDialogComponent,
     CartDialogComponent,
     ContactPageComponent,
+    ForgetComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

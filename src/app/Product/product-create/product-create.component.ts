@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductModel } from '../../Interfaces/product.model';
 import { ProductService } from '../product.service';
 import { Subscription } from 'rxjs';

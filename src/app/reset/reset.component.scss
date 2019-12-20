@@ -1,0 +1,85 @@
+@import '../../assets/scss/variables.scss';
+mat-card {
+    width: 20%;
+    height: 40rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media(max-width : 1200px) {
+        width: 35%
+      }
+
+    @media(max-width : 900px) {
+        width: 40%;
+    }
+
+    @media(max-width : 600px) {
+        width: 100%;
+        height: 100vh
+      }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading {
+    color: $color-grey-dark-2;
+    margin: 2rem 0;
+}
+
+.img {
+    width: 15%;
+    height: 15%;
+}
+
+.form {
+
+    &__input {
+        width: 100%;
+        font-size: 2rem;
+        text-align: center;
+        margin: 1.5rem 0;
+    }
+
+    &__label {
+        font-size: 1.5rem;
+        color: $color-grey-dark-2;
+    }
+
+    &__error {
+        color: red;
+    }
+
+    &__btn {
+        text-align: center;
+        margin: 2rem 0 6rem 0;
+    } 
+}
+
+.text {
+    font-size: 1.2rem;
+    color: $color-grey-dark-2;
+}
+
+.center {
+    text-align: center;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__center {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.3rem;
+        color: $color-grey-dark-2;
+    }
+}

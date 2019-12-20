@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule, MatCardModule, MatDialogModule, MatSelectModule, MatListModule, } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
@@ -14,7 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatSelectModule,
         MatListModule,
         MatExpansionModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         BrowserAnimationsModule,
@@ -25,7 +27,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatSelectModule,
         MatListModule,
         MatExpansionModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatProgressSpinnerModule
     ]
 })
 export class AngularMaterialModule {

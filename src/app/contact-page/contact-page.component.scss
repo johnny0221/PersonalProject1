@@ -1,12 +1,16 @@
 @import '../../assets/scss/variables.scss';
 
 .container {
+    height: 100vh;
     display: grid;
     grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
                             minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
-    
-    grid-template-rows: 5.5rem;
+    grid-template-rows: 5.5rem min-content;
     grid-row-gap: 2.5rem;
+
+    @media(max-width : 900px) {
+       grid-gap: 0;
+     }
 }
 
 .layout {
@@ -18,22 +22,38 @@
         grid-column: 2 / 10;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin: 5rem 0;
+        margin: 6rem 0;
         box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+        border: .5px solid $color-grey-dark-2;
+
+        @media(max-width : 900px) {
+            grid-column: 1 / -1;
+            margin: 0;
+         }
+
+         @media(max-width : 600px) {
+            border: none;
+         }
     }
 
     &--footer {
         grid-column: 1 / -1;
+
     }
 }
 
 .left {
     position: relative;
+    height: 100%;
     grid-column: 1 / 2;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%), url("https://images.pexels.com/photos/1550341/pexels-photo-1550341.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @media(max-width : 600px) {
+        display: none;
+     }
 
     &__content {
         position: absolute;
@@ -56,6 +76,10 @@
 
 .right {
     grid-column: 2 / 3;
+
+    @media(max-width : 600px) {
+        grid-column: 1 / -1;
+     }
     
 
     &__title {
@@ -63,6 +87,10 @@
         font-size: 2rem;
         color: $color-grey-dark-2;
         margin-top: 2rem;
+
+        @media(max-width : 600px) {
+            font-size: 5rem;
+         }
     }
 
     &__form {
@@ -82,6 +110,10 @@
             border: 1px solid #ccc;
             padding: .5rem;
             margin-bottom: 1.5rem;
+
+            @media(max-width : 600px) {
+                font-size: 3rem;
+             }
         }
     }
 
@@ -112,19 +144,13 @@
     }
 }
 
+.error {
+    color: red;
+}
+
 .namearea {
     display: flex;
     justify-content: space-between;
-}
-
-.btn {
-    background-color: $color-grey-dark-2;
-    color: white;
-    border: none;
-    font-size: 1.3rem;
-    padding: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 mat-form-field {

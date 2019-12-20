@@ -1,0 +1,21 @@
+<div class="loading" *ngIf="isFetching">
+    <mat-spinner></mat-spinner>
+    <p class="loading__center">Loading...</p>
+</div>
+
+<mat-card *ngIf="!isFetching">
+    <div class="content">
+        <div class="center">
+            <a routerLink="/chinese"><img src="../../assets/imgs/omo.png" alt="omo" class="img"></a>
+        </div>
+        <h2 class="heading">請輸入您的E-mail</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label class="form__label">Email</label>
+            <input type="text" class="form__input" formControlName="email" name="email">
+            <div class="form__btn">
+                <button mat-raised-button color="accent" [disabled]="form.invalid">Submit</button>
+            </div>
+        </form>
+        <p class="text">我們將寄信至您的信箱來幫助您修改密碼</p>
+    </div>
+</mat-card>

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { IUser } from '../user.model';
-import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { authService } from '../auth.service';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, switchMap, filter, map } from 'rxjs/operators';

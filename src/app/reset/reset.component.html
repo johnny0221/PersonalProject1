@@ -1,0 +1,28 @@
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <p class="loading__center">Loading...</p>
+</div>
+<mat-card *ngIf="!isLoading">
+    <div class="content">
+        <div class="center">
+            <a routerLink="/chinese"><img src="../../assets/imgs/omo.png" alt="omo" class="img"></a>
+        </div>
+        <h2 class="heading">請輸入新的密碼</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label class="form__label">輸入密碼</label>
+            <p class="form__error" *ngIf="form.get('password').invalid && !form.get('password').pristine">
+                請輸入至少八位數以上的密碼（包含一個英文大寫字母和一個數字）</p>
+            <input type="password" class="form__input" formControlName="password" name="password">
+            <label class="form__label">確認密碼</label>
+            <p class="form__error" *ngIf="form.get('confirmpassword').invalid && !form.get('confirmpassword').pristine">
+                請輸入至少八位數以上的密碼（包含一個英文大寫字母和一個數字）</p>
+            <p class="form__error" *ngIf="form.errors">
+                密碼與上述不符
+            </p>
+            <input type="password" class="form__input" formControlName="confirmpassword" name="confirmpassword">
+            <div class="form__btn">
+                <button mat-raised-button color="accent" [disabled]="form.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</mat-card>
