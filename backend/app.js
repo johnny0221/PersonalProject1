@@ -628,17 +628,16 @@ app.post('/ispermitted', (req, res) => {
 app.post('/resetpwd', (req, res) => {
     bcrypt.hash(req.body.password, 10)
         .then((hashedpwd) => {
-            User.updateOne({ resetPasswordToken: req.body.token }, { password: hashedpwd })
+            userUpdate = {
+                password: hashedpwd,
+                resetPasswordExpires: undefined,
+                resetPasswordToken: undefined
+            }
+            User.updateOne({ resetPasswordToken: req.body.token }, userUpdate)
                 .then((result) => {
                     if (result.n > 0) {
-                        User.findOne({ resetPasswordToken: req.body.token, resetPasswordExpires: { $gt: Date.now() } })
-                            .then((user) => {
-                                user.resetPasswordToken = undefined;
-                                user.resetPasswordExpires = undefined;
-                                user.save();
-                                return res.status(200).json({
-                                    message: "已成功更新您的密碼, 請使用新密碼進行登入"
-                                });
+                        res.status(200).json({
+                            message: "已成功更新您的密碼, 請使用新密碼進行登入"
                             });
                     } else {
                         res.status(400).json({

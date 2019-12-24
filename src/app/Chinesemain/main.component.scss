@@ -146,24 +146,14 @@
     margin-bottom: 3rem;
 
     &__image {
-        width: 15vw;
-        height: 30vh;
+        width: 15rem;
+        height: 15rem;
         margin-bottom: 2rem;
         border-radius: 5px;
 
-        @media(max-width : 1200px) {
-            width: 40vw;
-            height: 30vh;
-        }
-
-        @media(max-width : 900px) {
-            width: 50vw;
-            height: 30vh;
-        }
-
         @media(max-width : 600px) {
-            width: 60vw;
-            height: 30vh;
+            width: 27rem;
+            height: 27rem;
         }
     }
 
