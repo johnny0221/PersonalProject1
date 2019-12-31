@@ -4,7 +4,7 @@
             <a routerLink="/chinese"><img src="../../../assets/imgs/omo.png" alt="logo" class="logo__size"></a>
         </div>
         <p class="title">登入會員</p>
-        <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form action="" [formGroup]="form" (ngSubmit)="onSubmit()" class = "form">
             <label for="name" class=form__label>使用者名稱</label>
             <input type="text" id="name" class="form__input" formControlName="name" name="name">
             <label for="password" class=form__label>輸入密碼</label>

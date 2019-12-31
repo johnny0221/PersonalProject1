@@ -1,0 +1,76 @@
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened">
+    <div class="sidenav__user">
+      <p class="sidenav__text">Hello user</p>
+      <div class="sidenav__close">
+        <svg class="sidenav__icon" (click)="opened=!opened">
+          <use xlink:href="../../assets/sprite3.svg#close"></use>
+        </svg>
+      </div>
+    </div>
+    <ul class="sidenav__list">
+      <li class="sidenav__item">
+        <div class="center">
+          <a routerLink="/chinese" class="sidenav__link">回到主頁</a>
+        </div>
+      </li>
+      <li class="sidenav__item">
+        <div class="center">
+          <a routerLink="/chinese/about" class="sidenav__link">關於歐莫</a>
+        </div>
+      </li>
+      <li class="sidenav__item">
+        <div class="center">
+          <a routerLink="/chinese/product" class="sidenav__link">美味菜單</a>
+        </div>
+      </li>
+      <li class="sidenav__item">
+        <div class="center">
+          <a routerLink="/contact" class="sidenav__link">聯絡歐莫</a>
+        </div>
+      </li>
+      <li class="sidenav__item">
+        <div class="center">
+          <a routerLink="/login" class="sidenav__link">近期活動</a>
+        </div>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <section class="navbar">
+      <svg class="navbar__hamburger" (click)="opened=!opened">
+        <use xlink:href="../../assets/sprite3.svg#menu"></use>
+      </svg>
+      <div></div>
+      <div class="navbar__logogroup">
+        <a routerLink="/chinese"><img src="../../../assets/imgs/omo.png" alt="logoPic" class="navbar__logo"></a>
+        <span class="navbar__logo--text">Happy HandMade</span>
+      </div>
+      <ul class="navbar__btngroup">
+        <li class="navbar__btn" *ngIf="!isUserAuthenticated">
+          <svg class="navbar__icon">
+            <use xlink:href="../../assets/sprite.svg#user"></use>
+          </svg>
+          <a routerLink="/login" class="navbar__link">login</a>
+        </li>
+        <li class="navbar__btn" *ngIf="isUserAuthenticated">
+          <svg class="navbar__icon">
+            <use xlink:href="../../assets/sprite.svg#logout"></use>
+          </svg>
+          <a class="navbar__link" (click)="logout()">logout</a>
+        </li>
+        <li class="navbar__btn" *ngIf="isUserAuthenticated">
+          <svg class="navbar__icon">
+            <use xlink:href="../../assets/sprite3.svg#supermarket"></use>
+          </svg>
+          <a class="navbar__link" (click)="toCart()">Cart</a>
+        </li>
+      </ul>
+    </section>
+    <ng-content></ng-content>
+    <section class="footer">
+      <app-footer></app-footer>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -397,7 +397,7 @@ app.post('/user/login', (req, res) => {
 });
 
 app.get('/user/:id', checkAuth, (req, res) => {
-    User.findById(req.params.id).populate('cart').exec()
+    User.findById(req.params.id)
         .then((data) => {
             res.status(200).json({
                 userdata: data
@@ -476,45 +476,64 @@ app.post('/cart/add', checkAuth, (req, res) => {
     let FoundProduct;
     Product.findById(req.body.productId)
         .then((product) => {
-            FoundProduct = product
+            FoundProduct = product;
         })
         .then(() => {
+            let order = {
+                name: FoundProduct.name, 
+                price: FoundProduct.price, 
+                imageUrl: FoundProduct.imageUrl, 
+                productId: FoundProduct._id, 
+                quantity: 1
+            };
+            let itemExist = false;
             User.findById(req.body.userId)
                 .then(user => {
-                    user.cart.push(FoundProduct);
-                    user.save();
-                    res.json({
-                        message: 'hello'
-                    })
-                })
-        })
-});
+                    user.cart.forEach(product => {
+                       if(product.name === order.name) {
+                           itemExist = true;
+                           product.quantity += 1;
+                           user.save();
+                       }
+                    });
+                    if(itemExist === false) {
+                        user.cart.push(order);
+                        user.save();
+                    }
+                    res.status(200).json({
+                        message: "item added"
+                    });
+            });
+        });
+    });
 
-//delete a single product from the shopping cart
-app.post('/cart/delete', (req, res) => {
+//update single product's quantity
+app.post('/cart/update', (req, res) => {
     User.findById(req.body.userId)
         .then((user) => {
-            if (user.cart.indexOf(req.body.productId !== -1)) {
-                ProductPosition = user.cart.indexOf(req.body.productId);
-                user.cart.splice(ProductPosition, 1);
-                user.save();
-                res.status(200).json({
-                    message: 'successfully deleted'
-                });
-            }
-        });
+            user.cart.forEach(product => {
+                if(product.productId === req.body.productId) {
+                    product.quantity = req.body.quant;
+                    user.save();
+                    res.status(200).json({
+                        userdata: user
+                    });
+                }
+            });
+        })
 });
 
 //the trashcan btn will delete all the designated product
 app.post('/cart/deleteall', (req, res) => {
     User.findById(req.body.userId)
         .then((user) => {
-            user.cart = user.cart.filter(item => {
-                return !item.equals(req.body.productId);
+            console.log(req.body);
+            user.cart = user.cart.filter(product => {
+                return !(product.productId === req.body.productId);
             });
             user.save();
             res.status(200).json({
-                message: 'successfully deleted'
+                userdata: user
             });
         })
 });

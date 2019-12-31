@@ -1,0 +1,16 @@
+@import '../../../assets/scss/typography.scss';
+
+.mat-dialog-title {
+    text-align: center;
+}
+
+.mat-dialog-content {
+    font-family: $font-nice;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+}

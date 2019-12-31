@@ -3,7 +3,7 @@ import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { ErrorDialogComponent } from './CustomDialogs/error-dialog/error-dialog.component';
 import { Router } from '@angular/router';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductModel } from '../../Interfaces/product.model';
 import { Router } from '@angular/router';
-import { ConfirmComponent } from '../../confirm-dialog/confirm.component';
+import { ConfirmComponent } from '../../CustomDialogs/confirm-dialog/confirm.component';
 import { MatDialog } from '@angular/material';
 import { ProductService } from '../product.service';
 import { authService } from '../../auth/auth.service';

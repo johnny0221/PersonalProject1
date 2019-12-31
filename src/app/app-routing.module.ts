@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SliderComponent } from './landing/slider.component';
-import { MainComponent } from './Chinesemain/main.component';
+import { MainComponent } from './MainPage/main.component';
 import { AboutComponent } from './aboutPage/about-main/about.component';
 import { AboutCreateComponent } from './aboutPage/about-create/about-create.component';
 import { ProductComponent } from './Product/product/product.component';
@@ -11,19 +11,19 @@ import { ProductCreateComponent } from './Product/product-create/product-create.
 import { ProductTypeCreateComponent } from './Product/product-type-create/product-type-create.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from './ShoppingCartPage/shopping-cart.component';
 import { ProductItemComponent } from './Product/product-item/product-item.component';
-import { ContactPageComponent } from './contact-page/contact-page.component';
-import { ForgetComponent } from './forget/forget.component';
-import { ResetComponent } from './reset/reset.component';
+import { ContactPageComponent } from './ContactPage/contact-page.component';
+import { ForgetComponent } from './PasswordResetPage/forget/forget.component';
+import { ResetComponent } from './PasswordResetPage/reset/reset.component';
 const routes: Routes = [
   { path: '', component: SliderComponent },
-  { path: 'chinese', component: MainComponent },
-  { path: 'chinese/about', component: AboutComponent },
+  { path: 'chinese', component: MainComponent, data: { depth: 1 } },
+  { path: 'chinese/about', component: AboutComponent, data: { depth: 2 } },
   { path: 'people/create', component: AboutCreateComponent },
   { path: 'people/:id/edit', component: AboutCreateComponent },
   {
-    path: 'chinese/product', component: ProductComponent, children: [
+    path: 'chinese/product', component: ProductComponent, data: { depth: 2 }, children: [
       { path: '', component: ProductMainComponent },
       { path: 'drinks', component: ProductDessertsComponent },
       { path: 'desserts', component: ProductDessertsComponent },
@@ -38,8 +38,8 @@ const routes: Routes = [
   { path: 'ingredient/create', component: ProductTypeCreateComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: ':id/cart', component: ShoppingCartComponent },
-  { path: 'contact', component: ContactPageComponent },
+  { path: ':id/cart', component: ShoppingCartComponent, data: { depth: 2 } },
+  { path: 'contact', component: ContactPageComponent, data: { depth: 2 } },
   { path: 'forget', component: ForgetComponent },
   { path: 'reset/:token', component: ResetComponent }
 ];

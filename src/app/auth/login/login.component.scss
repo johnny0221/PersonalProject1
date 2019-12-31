@@ -18,10 +18,15 @@
     height: 85vh;
     padding: 3rem 5rem;
 
+    @media(max-width : 1200px) {
+            width: 40vw;
+            height: 85vh;
+    }
+
     @media(max-width : 900px) {
             width: 100vw;
             height: 100vh;
-        }
+    }
 }
 
 .logo {
@@ -29,33 +34,61 @@
     top: 2rem;
     left: 3rem;
 
-    @media(max-width : 1400px) {
-        top: 1rem;
-        left: 3rem;
-    }
-
     &__size {
         width: 5.5rem;
         height: 5.5rem;
         border-radius: 50%;
+
+        @media(max-width : 1200px) {
+            width: 8rem;
+            height: 8rem;
+        }
+
+        @media(max-width : 900px) {
+            width: 9rem;
+            height: 9rem;
+        }
+
+        @media(max-width : 600px) {
+            width: 13rem;
+            height: 13rem;
+        }
     }
 }
 
 .title {
     text-align: center;
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 4rem;
     margin-bottom: 3rem;
     color: $color-grey-dark-2;
+
+    @media(max-width : 600px) {
+        font-size: 6rem;
+    }
 }
 
 .form {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &__input {
         width: 100%;
         font-size: 2rem;
         border: 1px solid #ccc;
         padding: 1rem;
         margin-bottom: 1.5rem;
+
+        @media(max-width : 900px) {
+            width: 50%;
+         }
+
+        @media(max-width : 600px) {
+            width: 70%;
+            font-size: 4rem;
+         }
     }
 
     &__label {
@@ -63,6 +96,14 @@
         margin-bottom: 1rem;
         font-size: 1.5rem;
         color: $color-grey-dark-2;
+
+        @media(max-width : 1200px) {
+            font-size: 3rem;
+        }
+
+        @media(max-width : 600px) {
+            font-size: 5rem;
+        }
     }
 
     &__forget:visited, &__forget:link {
@@ -79,7 +120,15 @@
     }
 
     &__ok {
-        color: #799F0C
+        color: #799F0C;
+
+        @media(max-width : 900px) {
+            font-size: 2rem;
+         }
+
+        @media(max-width : 400px) {
+            font-size: 3rem;
+        }
     }
 
     &__error {
@@ -96,6 +145,7 @@ button {
 }
 
 .forget {
+    font-size: 3rem;
     margin-top: 2rem;
     text-align: center;
 }
@@ -107,15 +157,23 @@ button {
 
     &__text {
         margin-right: .5rem;
-        font-size: 1.3rem;
+        font-size: 2rem;
+
+        @media(max-width : 600px) {
+            font-size: 3.5rem;
+        }
     }
 
     &__link:visited, &__link:link {
-        font-size: 1.3rem;
+        font-size: 2rem;
         text-decoration: none;
         color: $color-black;
         border-bottom: 1px solid $color-black;
         transition: all .3s;
+
+        @media(max-width : 600px) {
+            font-size: 4rem;
+        }
     }
 
     &__link:hover, &__link:active {

@@ -148,3 +148,20 @@ mat-card {
         margin-bottom: 2rem;
     }
 }
+
+::ng-deep .my-class .mat-dialog-container{
+  height: 300px;
+  width: 400px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: $color-grey-dark-2;
+
+    @media(max-width : 900px) {
+        height: 250px;
+    }
+
+    @media(max-width : 600px) {
+        width: 200px;
+        height: 230px;    
+    }
+}

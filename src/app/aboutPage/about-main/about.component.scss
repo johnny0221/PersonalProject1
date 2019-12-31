@@ -1,37 +1,21 @@
 @import '../../../assets/scss/variables';
 @import '../../../assets/scss/mixin';
 
-.container {
-    display: grid;
-    grid-template-columns: [full-start] minmax(8rem, 1fr) [center-start] repeat(8, [col-start] 
-                            minmax(min-content, 14rem) [col-end] ) [center-end] minmax(8rem, 1fr) [full-end];
-    
-    grid-template-rows: 5.5rem;
-    grid-row-gap: 2.5rem;
-}
-
 .layout {
-    
-    &--nav {
-        grid-column: 1 / -1;
-    }
 
     &--intro {
+        margin: 5rem 0;
         position: relative;
-        grid-column: 2 / 10;
+        grid-column: 2 / 8;
     }
 
     &--people {
-        grid-column: 2 / 10;
+        grid-column: 2 / 8;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         grid-gap: 3rem;
         justify-content: center;
         padding: 5rem;
-    }
-
-    &--footer {
-        grid-column: 1 / -1;
     }
 }
 

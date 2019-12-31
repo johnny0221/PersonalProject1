@@ -11,9 +11,12 @@ const userSchema = new mongoose.Schema({
         }
     ],
     cart: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Product"
+        {   
+            productId: String,
+            name: String,
+            price: Number,
+            quantity: Number,
+            imageUrl: String
         }
     ],
     resetPasswordToken: String,

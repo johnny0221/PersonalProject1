@@ -4,6 +4,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatListModule,
         MatExpansionModule,
         MatPaginatorModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSidenavModule
     ],
     exports: [
         BrowserAnimationsModule,
@@ -28,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatListModule,
         MatExpansionModule,
         MatPaginatorModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSidenavModule
     ]
 })
 export class AngularMaterialModule {

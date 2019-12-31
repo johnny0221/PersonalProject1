@@ -33,6 +33,10 @@
 
     &__title {
         margin-bottom: 2rem;
+
+        @media only screen and (max-width: 750px) {
+            font-size: 6rem;
+        }
     }
 
     &__text {
@@ -50,6 +54,7 @@
         background-image: linear-gradient(to right, transparent 50%, $color-grey-dark-1 50%);
         background-size: 200%;
         transition: all .5s;
+        margin-bottom: 4rem;
     }
 
     &__btn:hover, &__btn:active {
@@ -63,6 +68,7 @@
 
         @media only screen and (max-width: 750px) {
             width: 100%;
+            margin-bottom: 4rem;
         }
     }
 }

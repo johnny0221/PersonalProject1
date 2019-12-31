@@ -1,0 +1,199 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixin';
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav-content {
+    padding: 16px;
+}
+
+mat-sidenav {
+    background-color: $color-white;
+    width: 20%;
+
+    @media(max-width : 1000px) {
+        width: 30%;
+    }
+
+    @media(max-width : 600px) {
+        width: 40%
+    }
+}
+
+::ng-deep .mat-drawer-container {
+    background-color: transparent;
+}
+
+.mat-sidenav-content {
+
+   display: grid;
+   grid-template-columns:  [full-start] minmax(5rem, 1fr) [center-start] repeat(6, [col-start] 
+   minmax(min-content, 20rem) [col-end] ) [center-end] minmax(5rem, 1fr) [full-end];
+}
+
+.sidenav {
+
+    &__text {
+        font-size: 1.8rem;
+        color: $color-white;
+
+        @media(max-width : 600px) {
+            font-size: 4rem;
+        }
+    }
+
+    &__user {
+        width: 100%;
+        padding: 2rem;
+        background-color: $color-gold-dark;
+        text-align: center;
+
+        @media(max-width : 600px) {
+            padding: 3rem;
+        }
+    }
+
+    &__list {
+        padding: 16px;
+        list-style: none;
+    }
+
+    &__link {
+        margin-left: .5rem;
+        text-decoration: none;
+        color: $color-gold-dark;
+        font-size: 2rem;
+        cursor: pointer;
+        outline: none;
+
+        @media(max-width : 600px) {
+            font-size: 3rem;
+        }
+    }
+
+    &__close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      @media(max-width : 600px) {
+        top: 1.5rem;
+        right: 1.5rem;
+        }
+    }
+
+    &__icon {
+        fill: $color-white;
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+
+        @media(max-width : 600px) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+
+    &__item {
+        margin: 2rem 0;
+        transition: .4s all;
+    }
+
+    &__item:hover {
+        background-color:  #f0f0f0;
+    }
+}
+
+.navbar {
+    margin: 0 5rem;
+    grid-column: 1 / -1;
+
+    &__hamburger {
+        position: fixed;
+        top: 1.5rem;
+        left: 3rem;
+        height: 5rem;
+        width: 5rem;
+        z-index: 300;
+
+        @media(max-width : 600px) {
+            width: 8rem;
+            height: 8rem;
+            top: 2.8rem;
+        }
+    }
+
+    &__logogroup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__logo {
+        width: 5.5rem;
+        height: 5.5rem;
+        margin-right: 1.3rem;
+
+        @media(max-width : 600px) {
+            width: 6.5rem;
+            height: 6.5rem;
+        }
+
+        &--text {
+            font-size: 2rem;
+            font-family: 'Dancing Script', cursive;
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__btngroup {
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        display: flex;
+        align-items: center;
+
+        @media(max-width : 600px) {
+            top: 4.3rem;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;        
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+
+        @media(max-width : 600px) {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    &__link {
+        margin: 0 2rem 0 .5rem;
+        text-decoration: none;
+        color: $color-grey-dark-2;
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+}
+
+.content {
+    grid-column: 2 / 8;
+}
+
+.footer {
+    grid-column: 1 / -1;
+}
+
+//utils
+.center {
+    text-align: center;
+}
+

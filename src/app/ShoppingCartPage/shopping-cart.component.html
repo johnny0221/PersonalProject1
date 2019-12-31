@@ -1,0 +1,63 @@
+<app-navbar>
+    <div class="layout--content">
+        <div class="content__left">
+            <div class="left__intro">
+                <p>您的購物車</p>
+            </div>
+            <h2 *ngIf="totalPrice === 0" class="empty">目前您的購物車裡沒有商品 !</h2>
+            <div class="left__product" *ngFor="let product of userDetail">
+                <img [src]="product.imageUrl" alt="cake" class="product__img">
+                <div class="product__info">
+                    <p class="product__info--name">{{ product.name }}</p>
+                    <p class="product__info--price">${{ product.price }}</p>
+                </div>
+                <div class="product__amount">
+                    <mat-form-field>
+                        <label class="mat-label">Quant</label>
+                        <mat-select panelClass="testClass" [(value)]="product.quantity"
+                            (selectionChange)="selectChange(product.productId, product.quantity)">
+                            <mat-option *ngFor="let number of quantites" [value]="number">
+                                {{ number }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="product__price">
+                    <p>${{ product.price * product.quantity }}</p>
+                </div>
+                <svg class="product__delete" (click)="DeleteAll(product.productId)">
+                    <use xlink:href="../../assets/sprite3.svg#bin"></use>
+                </svg>
+            </div>
+            <div class="button">
+                <button (click)="ToProductPage()" class="btn__general">繼續購物 &rarr;</button>
+            </div>
+
+        </div>
+        <div class="content__right">
+            <div class="right__total">
+                <div class="total__price">
+                    <p class="total__price--title">訂單摘要</p>
+                    <div class="sep">
+                        <hr />
+                    </div>
+                    <div class="total__price--product">
+                        <p class="priceForShipping">小計</p>
+                        <p class="priceForShipping">NT$ {{ totalPrice }}</p>
+                    </div>
+                    <div class="total__price--trans">
+                        <p class="priceForShipping">運費</p>
+                        <p class="priceForShipping">NT$ 30</p>
+                    </div>
+                    <div class="total__price--total">
+                        <p class="priceForShipping">總計</p>
+                        <p class="priceForShipping">NT$ {{ totalPrice + 30}}</p>
+                    </div>
+                </div>
+                <div class="total__check">
+                    <button class="total__check--btn">結帳</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-navbar>

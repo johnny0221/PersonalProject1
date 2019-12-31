@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { aboutService } from '../about.service';
 import { Subscription } from 'rxjs';
 import { peopleModel } from '../../Interfaces/people.model';
-import { ConfirmComponent } from '../../confirm-dialog/confirm.component';
+import { ConfirmComponent } from '../../CustomDialogs/confirm-dialog/confirm.component';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { authService } from '../../auth/auth.service';

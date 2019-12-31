@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
-import { shoppingCartService } from '../../shopping-cart/shopping-cart.service';
+import { shoppingCartService } from '../../ShoppingCartPage/shopping-cart.service';
 import { MatDialog, PageEvent } from '@angular/material';
-import { CommentDialogComponent } from '../../comment-dialog/comment-dialog.component';
-import { CartDialogComponent } from '../../cart-dialog/cart-dialog.component';
+import { CommentDialogComponent } from '../../CustomDialogs/comment-dialog/comment-dialog.component';
+import { CartDialogComponent } from '../../CustomDialogs/cart-dialog/cart-dialog.component';
 import { authService } from '../../auth/auth.service';
-import { ConfirmComponent } from 'src/app/confirm-dialog/confirm.component';
+import { ConfirmComponent } from '../../CustomDialogs/confirm-dialog/confirm.component';
 import { Subscription } from 'rxjs';
 import { ProductDetailModel } from '../../Interfaces/product-detail';
 import { Router, Params } from '@angular/router';
@@ -30,13 +30,17 @@ export class ProductItemComponent implements OnInit {
   private comments;
   private userId: string;
   private isAdmin;
+
+  private notAuthorized = "notauthenticated";
+
+
   private ProductSub: Subscription;
   private routeParamsSub: Subscription;
   private isAdminSub: Subscription;
-  private CommentCreateDialog: Subscription;
-  private CommentDeleteDialog: Subscription;
   private productDetail: ProductDetailModel | any = {};
   private totalComments;
+
+  //paginator variables
   private currentPage = 1;
   private pageSize = 2;
   private pageSizeOptions = [2, 5, 10];
@@ -70,6 +74,7 @@ export class ProductItemComponent implements OnInit {
         }
         this.comments = data.comments;
         this.totalComments = data.maxComments;
+        console.log(this.userId);
         for (const date of this.comments) {
           date.createdAt = (<string>date.createdAt).slice(0, 10);
         }
@@ -100,13 +105,16 @@ export class ProductItemComponent implements OnInit {
   addToShoppingCart() {
     this.shoppingCartService.AddOnetoCart(this.userId, this.productId).subscribe(data => {
       const cartDialogRef = this.dialog.open(CartDialogComponent, {
-        width: '50vw',
+        panelClass: 'my-class',
         data: { message: `已經此商品加入您的購物車 !` }
       });
 
       cartDialogRef.afterClosed().subscribe(value => {
-        if (value === true) {
+        if (value === "tocart") {
           this.router.navigate([`/${this.userId}/cart`]);
+        }
+        if (value === "stay") {
+          this.router.navigate([`/chinese/product/${this.productId}`])
         }
       });
     })

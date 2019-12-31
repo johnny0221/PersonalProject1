@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="heading-4">確認訊息</h1>
+<div mat-dialog-content>
+    <p>{{data.message}}</p>
+</div>
+<div mat-dialog-actions>
+    <button class="btn-1" mat-raised-button color="primary" mat-dialog-close="tocart">去購物車查看!</button>
+    <button class="btn-2" mat-raised-button color="accent" mat-dialog-close="stay" (click)="onNoClick()">我還想再看看!</button>
+</div>

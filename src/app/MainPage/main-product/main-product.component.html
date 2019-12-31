@@ -1,0 +1,12 @@
+<div class = "center">
+    <img [src]="product.imageUrl" alt="dessert" class="product__image">
+</div>
+<div class="product__content">
+    <p class="product__content--name">{{ product.name }}</p>
+    <p class="product__content--cal">{{ product.calory }} cal</p>
+    <p class="product__content--price">{{ product.price }} NTD</p>
+</div>
+<div class = "center">
+    <button (click)="toItemPage(product._id)" class="product__button">前往訂購</button>
+</div>
+

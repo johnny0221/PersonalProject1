@@ -1,0 +1,62 @@
+@import '../../../assets/scss/variables';
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    &__image {
+        width: 15rem;
+        height: 15rem;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+
+        @media(max-width : 600px) {
+            width: 27rem;
+            height: 27rem;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--name {
+            font-size: 2rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+            
+        }
+
+        &--cal {
+            font-size: 1.7rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+        }
+
+        &--price {
+            font-size: 1.7rem;
+            color: $color-grey-dark-2;
+            margin-top: .5rem;
+        }
+
+    }
+
+    &__button {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: $color-grey-dark-2;
+        color: $color-white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+
+        @media(max-width : 1000px) {
+            padding: 1.5rem;
+        }
+    }
+}

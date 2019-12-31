@@ -1,0 +1,228 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixin';
+
+.layout {
+    &--content {
+        min-height: 80vh;
+        margin: 5rem 0;
+        grid-column: 2 / 10;
+        display: grid;
+        grid-template-columns: 8fr 2fr;
+        grid-gap: 1.5rem;
+
+        @media(max-width : 900px) {
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+.content {
+
+    &__left {
+        grid-column: 1 / 2;
+
+        @media(max-width : 900px) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__right {
+        grid-column: 2 / 3;
+
+        @media(max-width : 900px) {
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+.left {
+
+    &__intro {
+        font-size: 2rem;
+        background-color: $color-grey-dark-2;
+        color: $color-white;
+        padding: 2rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+
+        @media(max-width : 900px) {
+            display: none;
+        }
+    }
+
+    &__product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 10vh;
+        margin: 2rem 1rem;
+    }
+}
+
+.right {
+
+    &__total {
+        
+    }
+
+}
+
+.product {
+
+    &__img {
+        width: 10vh;
+        height: 100%;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        color: $color-grey-dark-2;
+
+        @media(max-width : 400px) {
+            display: none;
+        }
+
+        &--price {
+            font-size: 1.3rem;
+            color: inherit;
+        }
+
+        &--name {
+            font-size: 1.3rem;
+            color: inherit;
+        }
+
+    }
+
+    &__amount {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__price {
+        font-size: 1.3rem;
+        color: $color-grey-dark-2;    
+    }
+
+    &__delete {
+        fill: $color-grey-dark-2;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+
+        @media(max-width : 600px) {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        @media(max-width : 400px) {
+            width: 2.8rem;
+            height: 2.8rem;
+        }
+    }
+
+}
+
+.total {
+    &__price {
+        background-color: $color-grey-dark-2;
+        padding: 1.5rem;
+
+        @media(max-width : 900px) {
+            padding: 2.5rem;
+        }
+        &--title {
+            color: $color-white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: .5rem;
+        }
+
+        &--product {
+            color: $color-white;
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem;
+        }
+
+        &--trans {
+            color: $color-white;
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem;
+        }
+
+        &--total {
+            color: $color-white;
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem;
+        }
+    }
+
+    &__check {
+        padding: 1.5rem;
+        background-color: gold;
+        text-align: center;
+
+        &--btn {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            background-color: gold;
+            color: $color-grey-dark-2;
+            cursor: pointer;
+        }
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn__general:hover, .btn__general:active {
+    color: $color-white;
+    background-color: $color-grey-dark-2;
+    background-position: 100%;
+}
+
+.btn__general {
+    font-size: 1.5rem;
+    color: $color-grey-dark-2;
+    padding: 1rem;
+    text-decoration: none;
+    background-size: 200%;
+    background-image: linear-gradient(to right, $color-white 50%, $color-grey-dark-2 50%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.sep {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.empty {
+    text-align: center;
+}
+
+.mat-select{
+    font-size: 1.5rem;
+}
+
+.mat-label {
+    font-size: 1.3rem;
+}
+
+::ng-deep .mat-form-field{
+    width: 100%;
+
+    @media(max-width: 400px) {
+        width: 50%;
+    }
+}

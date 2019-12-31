@@ -1,0 +1,27 @@
+@import '../../../assets/scss/variables';
+
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap: 2rem;
+    color: $color-grey-dark-2;
+   
+    &__icon {
+        fill: $color-grey-dark-2;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    &__title {
+        font-size: 3rem;
+        color: inherit;
+        justify-self: center;
+        align-self: center;
+    }
+
+    &__content {
+        grid-column: 1 / 3;
+        font-size: 1.5rem;
+        color: inherit;
+    }
+}

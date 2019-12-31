@@ -1,0 +1,87 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixin';
+@keyframes moveFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(10rem); }
+    100% {
+      opacity: 1;
+      transform: translate(0); } }
+
+.layout {
+    &--content {
+        grid-column: 2 / 8;
+    }
+}
+
+.one {
+    animation: moveFromBottom 1s ease-in;
+}
+
+.two {
+    animation: moveFromBottom 1s ease-in;
+}
+
+.title {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.btn-center {
+    text-align: center;
+    margin: 5rem auto;
+}
+
+.btn-general {
+    font-size: 1.5rem;
+    color: $color-grey-dark-2;
+    padding: 1rem;
+    text-decoration: none;
+    background-size : 200%;
+    background-image: linear-gradient(to right, $color-white 50%, $color-grey-dark-2 50%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.btn-general:hover, .btn-general:active {
+    color: $color-white;
+    background-color: $color-grey-dark-2;
+    background-position: 100%;
+}
+
+.content {
+
+    &__welcome {
+
+        &--user {
+            font-size: 3rem;
+        }
+
+        &--explore {
+            font-size: 2rem;
+        }
+    }
+
+    &__intro {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-gap: 4.5rem;
+        align-items: center;
+        justify-items: center;
+    }
+
+    &__product {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 4rem;
+    }
+}
+
+.cart {
+
+    &__text {
+        font-size: 1.8rem;
+        text-align: center;                                   
+    }
+}
