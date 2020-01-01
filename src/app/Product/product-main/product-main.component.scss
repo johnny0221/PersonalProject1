@@ -3,7 +3,7 @@
 
 .container {
     display: flex;
-    
+    margin: 4rem 0;
 
     &:nth-child(even) {
         flex-direction: row-reverse;

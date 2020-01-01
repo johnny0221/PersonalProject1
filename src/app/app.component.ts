@@ -10,16 +10,16 @@ import { trigger, transition, group, query, style, animate } from '@angular/anim
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimation', [
-      transition('1 => 2', [
+      transition('1 <=> 2', [
         style({ height: '!' }),
-        query(':enter', style({ transform: 'translateX(130%)' })),
+        query(':enter', style({ opacity: 0 })),
         query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0 })),
         group([
           query(':leave', [
-            animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(130%)' })),
+            animate('3s cubic-bezier(.35,0,.25,1)', style({ opacity: 0 })),
           ]),
           // and now reveal the enter
-          query(':enter', animate('.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(10%)' }))),
+          query(':enter', animate('3s cubic-bezier(.35,0,.25,1)', style({ opacity: 1 }))),
 
         ])
       ])
