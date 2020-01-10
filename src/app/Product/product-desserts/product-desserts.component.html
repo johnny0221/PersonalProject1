@@ -1,10 +1,18 @@
-<div>
+<div class="catalog">
     <a routerLink="/chinese" class="catalog__item link"> 目錄 </a>
     <span> > </span>
-    <a routerLink="/chinese/product" class="catalog__item link"> 美味菜單 </a>
+    <a routerLink="/product" class="catalog__item link"> 美味菜單 </a>
     <span> > </span>
     <span class="catalog__item"> {{ routeLink}}</span>
 </div>
+<div class="center">
+    <form class="form" [formGroup]="form">
+        <input placeholder=" 搜尋甜點" class="form__input" name="search" FormControlName="search" #search>
+    </form>
+</div>
 <div class="grid">
-    <app-product-card *ngFor="let product of dessertInfo" [product]="product"></app-product-card>
+    <app-product-card *ngFor="let product of dessertInfo" [product]="product" class="flexitem"></app-product-card>
+</div>
+<div class="center notfound" *ngIf="dessertInfo.length === 0">
+    <h2>Sorry, 可能沒有提供您搜尋的甜點喔</h2>
 </div>

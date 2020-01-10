@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { authService } from '../../auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-main',
@@ -11,7 +12,7 @@ export class ProductMainComponent implements OnInit {
 
   constructor(private router: Router, private authService: authService) { }
 
-  private adminStatus;
+  public adminStatus: Observable<boolean>;
 
   ngOnInit() {
     this.adminStatus = this.authService.getAdminStatus()

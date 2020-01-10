@@ -8,24 +8,18 @@
     position: relative;
     perspective: 150rem;
     -moz-perspective: 150rem;
-    height: 23rem;
+    width: 25rem;
+    height: 25rem;
+    margin: 1rem;
 
     @media(max-width : 967px) {
-        height: 36rem;
-        width: 25rem;
-        margin: 0 auto;
-    }
-
-    @media(max-width : 900px) {
-        height: 25rem;
-        width: 25rem;
-        margin: 0 auto;
+        height: 28rem;
+        width: 28rem;
     }
 
     @media(max-width : 600px) {
-        height: 35rem;
-        width: 25rem;
-        margin: 0 auto;
+        height: 45rem;
+        width: 45rem;
     }
 
     &__side {
@@ -58,8 +52,8 @@
         width: 100%;
         height: 70%;
 
-        @media(max-width : 900px) {
-            height: 50%;
+        @media(max-width : 967px) {
+            height: 60%;
         }
     }
 

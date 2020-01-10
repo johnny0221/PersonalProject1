@@ -6,6 +6,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav-content {
+    width: 100%;
     padding: 16px;
 }
 
@@ -27,10 +28,14 @@ mat-sidenav {
 }
 
 .mat-sidenav-content {
-
    display: grid;
    grid-template-columns:  [full-start] minmax(5rem, 1fr) [center-start] repeat(6, [col-start] 
-   minmax(min-content, 20rem) [col-end] ) [center-end] minmax(5rem, 1fr) [full-end];
+   minmax(7rem, 20rem) [col-end] ) [center-end] minmax(5rem, 1fr) [full-end];
+   grid-template-rows: 100px 1fr 50px;
+
+   @media(max-width : 600px) {
+    grid-template-rows: 40px 1fr 50px;
+}
 }
 
 .sidenav {
@@ -40,7 +45,7 @@ mat-sidenav {
         color: $color-white;
 
         @media(max-width : 600px) {
-            font-size: 4rem;
+            font-size: 2.5rem;
         }
     }
 
@@ -109,10 +114,12 @@ mat-sidenav {
 .navbar {
     margin: 0 5rem;
     grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    
 
     &__hamburger {
         position: fixed;
-        top: 1.5rem;
+        top: 1rem;
         left: 3rem;
         height: 5rem;
         width: 5rem;
@@ -186,14 +193,32 @@ mat-sidenav {
 
 .content {
     grid-column: 2 / 8;
+    grid-row: 2 / 3;
+    margin: 3rem 0;
 }
 
 .footer {
     grid-column: 1 / -1;
+    grid-row: 3 / 4;
 }
 
 //utils
 .center {
     text-align: center;
+}
+
+.util {
+    display: none;
+    
+    @media(max-width: 500px) {
+        display: block;
+    }
+}
+
+.navshow {
+    
+    @media(max-width: 500px) {
+        display: none;
+    }
 }
 

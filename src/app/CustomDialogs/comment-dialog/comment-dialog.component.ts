@@ -30,7 +30,7 @@ export class CommentDialogComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      'comment': new FormControl(null, Validators.required)
+      'comment': new FormControl(null, [Validators.required, Validators.maxLength(500)])
     });
   }
 

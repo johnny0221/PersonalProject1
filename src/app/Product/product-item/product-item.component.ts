@@ -27,24 +27,23 @@ export class ProductItemComponent implements OnInit {
     private router: Router) { }
 
   private productId: string;
-  private comments;
-  private userId: string;
-  private isAdmin;
-
-  private notAuthorized = "notauthenticated";
+  public comments: any[];
+  public userId: string;
+  private isAdmin: boolean;
+  public notAuthorized: string = "notauthenticated";
 
 
   private ProductSub: Subscription;
   private routeParamsSub: Subscription;
   private isAdminSub: Subscription;
-  private productDetail: ProductDetailModel | any = {};
-  private totalComments;
+  public productDetail: ProductDetailModel | any = {};
+  public totalComments: number;
 
   //paginator variables
   private currentPage = 1;
-  private pageSize = 2;
-  private pageSizeOptions = [2, 5, 10];
-  private pageIndex = 0;
+  public pageSize = 2;
+  public pageSizeOptions = [2, 5, 10];
+  public pageIndex = 0;
 
 
   ngOnInit() {
@@ -74,7 +73,6 @@ export class ProductItemComponent implements OnInit {
         }
         this.comments = data.comments;
         this.totalComments = data.maxComments;
-        console.log(this.userId);
         for (const date of this.comments) {
           date.createdAt = (<string>date.createdAt).slice(0, 10);
         }
@@ -91,7 +89,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   toProductPage(id: string) {
-    this.router.navigate([`/chinese/product/${id}`]);
+    this.router.navigate([`product/${id}`]);
   }
 
   changePage(pageData: PageEvent) {
@@ -114,7 +112,7 @@ export class ProductItemComponent implements OnInit {
           this.router.navigate([`/${this.userId}/cart`]);
         }
         if (value === "stay") {
-          this.router.navigate([`/chinese/product/${this.productId}`])
+          this.router.navigate([`product/${this.productId}`])
         }
       });
     })

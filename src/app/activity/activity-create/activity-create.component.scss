@@ -1,0 +1,57 @@
+@import '../../../assets/scss/variables.scss';
+
+.container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.title-activity {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+mat-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form {
+    margin: 0 auto;
+
+    &__btn {
+        margin: 2rem 0;
+    }
+
+    &__error {
+        margin: 8px 0;
+        color: red;
+        font-size: .8rem;
+    }
+}
+
+mat-form-field {
+    width: 70%;
+    margin: 2rem 0;
+    font-size: 1.3rem;
+}
+
+
+//load spinner
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__center {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.3rem;
+        color: $color-grey-dark-2;
+    }
+}
+

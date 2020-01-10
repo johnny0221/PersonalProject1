@@ -17,17 +17,17 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router
   ) { }
 
-  private userId;
-  private userDetail;
-  private totalPrice = 0;
-  private quantites = [1,2,3,4,5,6,7,8,9,10];
+  private userId: string;
+  public userDetail;
+  public totalPrice: number = 0;
+  public quantites: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.shoppingCartService.getTargetUser(this.userId);
     this.shoppingCartService.UserSubjectListener().subscribe((data) => {
       this.userDetail = data.cart;
-      
+
       //recalculate everytime
       this.totalPrice = 0;
       //calculating the total price.

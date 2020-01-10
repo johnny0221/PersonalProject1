@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor(private authService: authService, private router: Router) { }
-  private opened = false;
-  private userid;
-  isUserAuthenticated = false;
+  public opened: boolean = false;
+  private userid: string;
+  public isUserAuthenticated: boolean = false;
   private authStatusListener: Subscription;
 
 
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   toCart() {
-    this.router.navigate([`/${this.userid}/cart`]);
+    this.router.navigate([`/cart/${this.userid}`]);
   }
 
   ngOnDestroy() {

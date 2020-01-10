@@ -18,9 +18,9 @@ export class ResetComponent implements OnInit {
     private route: ActivatedRoute,
     private resetService: ResetService) { }
 
-  form: FormGroup;
-  resetToken: string;
-  isLoading: boolean;
+  public form: FormGroup;
+  private resetToken: string;
+  public isLoading: boolean;
 
   ngOnInit() {
     this.isLoading = false;

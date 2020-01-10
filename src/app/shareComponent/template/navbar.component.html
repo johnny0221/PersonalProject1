@@ -16,12 +16,12 @@
       </li>
       <li class="sidenav__item">
         <div class="center">
-          <a routerLink="/chinese/about" class="sidenav__link">關於歐莫</a>
+          <a routerLink="/about" class="sidenav__link">關於歐莫</a>
         </div>
       </li>
       <li class="sidenav__item">
         <div class="center">
-          <a routerLink="/chinese/product" class="sidenav__link">美味菜單</a>
+          <a routerLink="/product" class="sidenav__link">美味菜單</a>
         </div>
       </li>
       <li class="sidenav__item">
@@ -31,7 +31,17 @@
       </li>
       <li class="sidenav__item">
         <div class="center">
-          <a routerLink="/login" class="sidenav__link">近期活動</a>
+          <a routerLink="/activity" class="sidenav__link">近期活動</a>
+        </div>
+      </li>
+      <li class="sidenav__item" *ngIf="isUserAuthenticated">
+        <div class="center">
+          <a routerLink="/activity" class="sidenav__link util" (click)="toCart()">購物車</a>
+        </div>
+      </li>
+      <li class="sidenav__item" *ngIf="isUserAuthenticated">
+        <div class="center">
+          <a routerLink="/activity" class="sidenav__link util" (click)="logout()">用戶登出</a>
         </div>
       </li>
     </ul>
@@ -52,15 +62,15 @@
           <svg class="navbar__icon">
             <use xlink:href="../../assets/sprite.svg#user"></use>
           </svg>
-          <a routerLink="/login" class="navbar__link">login</a>
+          <a routerLink="/auth/login" class="navbar__link">login</a>
         </li>
-        <li class="navbar__btn" *ngIf="isUserAuthenticated">
+        <li class="navbar__btn navshow" *ngIf="isUserAuthenticated">
           <svg class="navbar__icon">
             <use xlink:href="../../assets/sprite.svg#logout"></use>
           </svg>
           <a class="navbar__link" (click)="logout()">logout</a>
         </li>
-        <li class="navbar__btn" *ngIf="isUserAuthenticated">
+        <li class="navbar__btn navshow" *ngIf="isUserAuthenticated">
           <svg class="navbar__icon">
             <use xlink:href="../../assets/sprite3.svg#supermarket"></use>
           </svg>
@@ -68,7 +78,9 @@
         </li>
       </ul>
     </section>
-    <ng-content></ng-content>
+    <section class="content">
+      <ng-content></ng-content>
+    </section>
     <section class="footer">
       <app-footer></app-footer>
     </section>

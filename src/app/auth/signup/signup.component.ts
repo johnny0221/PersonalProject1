@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { authService } from '../auth.service';
 import { fromEvent, Subscription } from 'rxjs';
@@ -15,9 +15,9 @@ export class SignupComponent implements OnInit, AfterViewInit {
 
   constructor(private authService: authService) { }
 
-  form: FormGroup;
-  duplicateName: boolean;
-  userNameCheckSub: Subscription;
+  public form: FormGroup;
+  public duplicateName: boolean;
+  private userNameCheckSub: Subscription;
 
   initForm() {
     this.form = new FormGroup({
@@ -43,6 +43,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.userNameCheckSub = fromEvent(this.input.nativeElement, 'input')
+      //pipe() will return an observable
       .pipe(
         debounceTime(1000),
         map((data: any) => {
@@ -50,6 +51,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
         }),
         filter(data => data >= 3),
         switchMap(() => {
+          //checkUserName() will return an observable too, so we need to flatten it
           return this.authService.checkUserName();
         })
       ).subscribe((data: any) => {

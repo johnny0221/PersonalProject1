@@ -13,10 +13,10 @@ export class AboutCreateComponent implements OnInit {
 
   constructor(private aboutService: aboutService, private route: ActivatedRoute, private router: Router) { }
 
-  private isEditMode = false;
-  personId: string;
-  form: FormGroup;
-  targetPerson: peopleModel = { name: "", age: null, image: "", position: "", text: "" };
+  public isEditMode: boolean = false;
+  private personId: string;
+  public form: FormGroup;
+  private targetPerson: peopleModel = { name: "", age: null, image: "", position: "", text: "" };
 
   //creating blank form.
   createFormGroup() {

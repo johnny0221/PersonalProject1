@@ -1,8 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ProductModel } from '../../Interfaces/product.model';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription, fromEvent } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-desserts',
@@ -11,22 +14,48 @@ import { Subscription } from 'rxjs';
 })
 export class ProductDessertsComponent implements OnInit {
 
-  dessertInfo: ProductModel[] = [];
-  productSub: Subscription;
-  routeName: string = this.router.url.substring(17);
-  routeLink: string;
+  public dessertInfo: ProductModel[] = [];
+  private productSub: Subscription;
+  public routeLink: string;
+  public form: FormGroup;
+  @ViewChild('search', { static: false }) search: ElementRef;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private Location: Location) { }
 
   ngOnInit() {
+    this.initForm();
     this.productSub = this.productService.ProductDataSubListener().subscribe((data) => {
       this.dessertInfo = data;
     });
     this.getProduct();
   }
 
+  ngAfterViewInit() {
+    let type = this.Location.path().slice(9);
+    fromEvent(this.search.nativeElement, 'input')
+      .pipe(
+        map((data: any) => {
+          return data.target.value;
+        }),
+        switchMap((data) => {
+          return this.productService.searchItem(data, type);
+        })
+      )
+      .subscribe((data) => {
+        let ProductData = data.product;
+        this.productService.productDataSub.next([...ProductData]);
+      })
+
+  }
+
   ngOnDestroy() {
     this.productSub.unsubscribe();
+  }
+
+  initForm() {
+    this.form = new FormGroup({
+      'search': new FormControl(null, { validators: [Validators.required] })
+    })
   }
 
   //helper method to decide which kind of data to get back.

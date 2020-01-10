@@ -15,12 +15,12 @@ export class ProductCreateComponent implements OnInit {
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
-  isEditMode = false;
-  productId: string;
-  form: FormGroup;
-  types: string[] = ['drinks', 'desserts', 'lightmeals'];
-  ingredients: string[];
-  IngredientSub: Subscription;
+  public isEditMode: boolean = false;
+  private productId: string;
+  public form: FormGroup;
+  public types: string[] = ['drinks', 'desserts', 'lightmeals'];
+  public ingredients: string[];
+  private IngredientSub: Subscription;
 
   createForm() {
     this.form = new FormGroup({

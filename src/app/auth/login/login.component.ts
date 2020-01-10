@@ -10,7 +10,7 @@ import { authService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(private authService: authService) { }
 

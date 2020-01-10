@@ -1,13 +1,50 @@
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-gap: 3rem;
-    justify-content: center;
-    padding: 5rem;
+@import '../../../assets/scss/variables';
 
-    @media(max-width : 970px) {
-        padding: 5rem 10rem;
+.catalog {
+    margin-bottom: 3rem;
+}
+
+.form {
+    &__input {
+        font-size: 1.5rem;
+        height: 40px;
     }
+
+    &__inputbtn {
+        text-align: center;
+        display: inline-block;
+    }
+
+    &__btn {
+        background-color: $color-grey-dark-2;
+        height: 40px;
+        color: $color-white;
+        padding: 8px;
+        font-size: 1.5rem;
+        margin-left: -1px;
+    }
+}
+
+
+
+
+// .grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(rem, 1fr));
+//     grid-gap: 3rem;
+//     justify-content: center;
+//     padding: 5rem;
+
+//     @media(max-width : 970px) {
+//         padding: 5rem 10rem;
+//     }
+// }
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 7rem 0;
 }
 
 .catalog {
@@ -17,6 +54,15 @@
         text-decoration: none;
         font-size: 1.4rem;
         outline: none;
+    }
+}
+
+.notfound {
+    margin: 100px 0 300px 0;
+
+
+    @media(max-width : 600px) {
+        margin: 100px 0 200px 0;
     }
 }
 

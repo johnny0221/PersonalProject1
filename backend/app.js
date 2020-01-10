@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const People = require('./models/people');
 const Product = require('./models/product');
 const Comment = require('./models/comment');
+const Activity = require('./models/activity');
 const User = require('./models/user');
 const Ingredient = require('./models/ingredient');
 const bcrypt = require('bcryptjs');
@@ -214,10 +215,20 @@ app.get('/product/lightmeal', (req, res) => {
             });
 });
 
+//search product
+app.post('/product/search', (req, res) => {
+    Product.find({ name: new RegExp(req.body.input), type: req.body.type })
+        .then((data) => {
+            res.status(200).json({
+                data: data
+            })
+        })
+});
+
 //for mainPage random data
 app.get('/randomproduct', (req, res) => {
     let randomNumber = Math.floor(Math.random() * 10);
-    Product.find({}).skip(randomNumber).limit(4).then(
+    Product.find({}).skip(randomNumber).limit(3).then(
         (data) => {
             res.status(200).send(data);
         });
@@ -232,9 +243,6 @@ app.get('/product/:id', (req, res) => {
             let maxComments = data.comments.length;
             let comments = data.comments;
             let lastFetched = currentPage * pageSize;
-            if (lastFetched > maxComments) {
-                lastFetched = maxComments;
-            }
             comments = comments.slice(((currentPage - 1) * pageSize), lastFetched);
             res.status(200).json({
                 data: data,
@@ -480,39 +488,39 @@ app.post('/cart/add', checkAuth, (req, res) => {
         })
         .then(() => {
             let order = {
-                name: FoundProduct.name, 
-                price: FoundProduct.price, 
-                imageUrl: FoundProduct.imageUrl, 
-                productId: FoundProduct._id, 
+                name: FoundProduct.name,
+                price: FoundProduct.price,
+                imageUrl: FoundProduct.imageUrl,
+                productId: FoundProduct._id,
                 quantity: 1
             };
             let itemExist = false;
             User.findById(req.body.userId)
                 .then(user => {
                     user.cart.forEach(product => {
-                       if(product.name === order.name) {
-                           itemExist = true;
-                           product.quantity += 1;
-                           user.save();
-                       }
+                        if (product.name === order.name) {
+                            itemExist = true;
+                            product.quantity += 1;
+                            user.save();
+                        }
                     });
-                    if(itemExist === false) {
+                    if (itemExist === false) {
                         user.cart.push(order);
                         user.save();
                     }
                     res.status(200).json({
                         message: "item added"
                     });
-            });
+                });
         });
-    });
+});
 
 //update single product's quantity
 app.post('/cart/update', (req, res) => {
     User.findById(req.body.userId)
         .then((user) => {
             user.cart.forEach(product => {
-                if(product.productId === req.body.productId) {
+                if (product.productId === req.body.productId) {
                     product.quantity = req.body.quant;
                     user.save();
                     res.status(200).json({
@@ -606,7 +614,7 @@ app.post('/forgetpwd', (req, res) => {
                 from: "omo.gmail.com",
                 subject: "Password Reset Notification",
                 text: "OMO Dessert Corp.",
-                html: '<table width=100% border=0 cellspacing=0 cellpadding=0><tr><td align=center width: 50%; ><div style = "background-color: #F0F0F0; width: 50%;"><img src="cid:logo@omo.com" alt = "logo" style = "width:60px; height: 60px; border-radius: 50%; padding-top: 20px"><h2 style = "color: #654321;">OMO DESSERT PASSWORD RESET</h2><h3>Link:</h3><a href="http:/localhost:4200/reset/' + token + '"' + '>ResetPassword</a><p style = "color: #654321; font-size: 18px;">please click the link above to reset your password</p><p style = "color: #654321; padding: 40px 0 80px 0; ">連結將在1小時後失效</p><p style = "color: #654321; padding: 40px 0 80px 0; ">Thank you, OMO</p></div></td></tr></table>',
+                html: '<table width=100% border=0 cellspacing=0 cellpadding=0><tr><td align=center width: 50%; ><div style = "background-color: #F0F0F0; width: 50%;"><img src="cid:logo@omo.com" alt = "logo" style = "width:60px; height: 60px; border-radius: 50%; padding-top: 20px"><h2 style = "color: #654321;">OMO DESSERT PASSWORD RESET</h2><h3>Link:</h3><a href="http:/localhost:4200/forget/reset/' + token + '"' + '>ResetPassword</a><p style = "color: #654321; font-size: 18px;">please click the link above to reset your password</p><p style = "color: #654321; padding: 40px 0 80px 0; ">連結將在1小時後失效</p><p style = "color: #654321; padding: 40px 0 80px 0; ">Thank you, OMO</p></div></td></tr></table>',
                 attachments: [{
                     filename: 'omologo.jpg',
                     path: '../src/assets/imgs/omo.png',
@@ -657,7 +665,7 @@ app.post('/resetpwd', (req, res) => {
                     if (result.n > 0) {
                         res.status(200).json({
                             message: "已成功更新您的密碼, 請使用新密碼進行登入"
-                            });
+                        });
                     } else {
                         res.status(400).json({
                             message: "update failed"
@@ -665,5 +673,98 @@ app.post('/resetpwd', (req, res) => {
                     }
                 });
         });
+});
+
+//Acitivty CRUD
+
+//Activity get
+app.get('/activity/get', async (req, res) => {
+    try {
+        const pagesize = +req.query.pagesize;
+        const currentpage = +req.query.currentpage;
+        const Activities = await Activity.find({});
+        const maxlength = Activities.length;
+        const FetchedActivities = await Activity.find({}).skip(pagesize * (currentpage - 1)).limit(pagesize).sort({ DateStart: -1 });
+        res.status(200).json({
+            data: FetchedActivities,
+            maxlength: maxlength
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: e.error
+        })
+    }
+});
+
+//Activity Create
+app.post('/activity/create', checkAdmin, (req, res) => {
+    const newAcitivty = new Activity({
+        name: req.body.name,
+        DateStart: req.body.DateStart,
+        DateEnd: req.body.DateEnd,
+        image: req.body.image,
+        description: req.body.description
+    });
+    newAcitivty.save()
+        .then(data => {
+            res.status(200).json({
+                message: 'successfully created'
+            })
+        });
+});
+
+//get Target Activity
+app.get('/activity/get/:id', async (req, res) => {
+    const TargetActivity = await Activity.findById(req.params.id);
+    res.status(200).send(TargetActivity);
+});
+
+//update Target Activity
+app.put('/activity/update/:id', checkAdmin, async (req, res) => {
+    try {
+        const UpdateActivity = new Activity({
+            _id: req.params.id,
+            name: req.body.name,
+            DateStart: req.body.DateStart,
+            DateEnd: req.body.DateEnd,
+            image: req.body.image,
+            description: req.body.description
+        });
+        const result = await Activity.updateOne({ _id: req.params.id }, UpdateActivity);
+        if (result.n > 0) {
+            res.status(200).json({
+                message: "successfully updated"
+            });
+        } else {
+            res.status(403).json({
+                message: "not authorized"
+            });
+        }
+    } catch (e) {
+        res.status(500).json({
+            message: e.error
+        })
+    }
+});
+
+//Delete Target Activity
+app.delete('/activity/delete/:id', checkAdmin, async (req, res) => {
+    try {
+        const result = await Activity.deleteOne({ _id: req.params.id });
+        console.log('e');
+        if (result.n > 0) {
+            res.status(200).json({
+                message: "successfully updated"
+            });
+        } else {
+            res.status(403).json({
+                message: "not authorized"
+            });
+        }
+    } catch (e) {
+        res.status(500).json({
+            message: e.error
+        })
+    }
 });
 module.exports = app;

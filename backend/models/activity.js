@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 const activitySchema = mongoose.Schema({
     name: String,
     image: String,
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
+    DateStart: Date,
+    DateEnd: Date,
     description: String
 });
 

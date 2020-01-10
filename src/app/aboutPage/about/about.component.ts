@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { aboutService } from '../about.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { peopleModel } from '../../Interfaces/people.model';
 import { ConfirmComponent } from '../../CustomDialogs/confirm-dialog/confirm.component';
 import { MatDialog } from '@angular/material';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { authService } from '../../auth/auth.service';
 
 @Component({
@@ -18,14 +18,30 @@ export class AboutComponent implements OnInit, OnDestroy {
     private aboutService: aboutService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute,
     private authService: authService
   ) { }
 
-  people: peopleModel[];
-  aboutSub: Subscription;
-  checkAdminStatus;
+  public people: peopleModel[];
+  private aboutSub: Subscription;
+  public checkAdminStatus: Observable<boolean>;
 
+  ngOnInit() {
+    //get data of people
+    this.aboutSub = this.aboutService.peopleData.subscribe((peopleData) => {
+      this.people = peopleData;
+    })
+    this.aboutService.getPeople();
+    //auth check
+    this.checkAdminStatus = this.authService.getAdminStatus()
+  }
+
+  onEdit(id: string) {
+    this.router.navigate([`about/${id}/edit`]);
+  }
+
+  onDelete(id: string, name: string) {
+    this.openDialog(id, name);
+  }
 
   openDialog(id: string, name: string): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
@@ -42,25 +58,6 @@ export class AboutComponent implements OnInit, OnDestroy {
         return;
       }
     });
-  }
-
-
-  ngOnInit() {
-    //get data of people
-    this.aboutSub = this.aboutService.peopleData.subscribe((peopleData) => {
-      this.people = peopleData;
-    })
-    this.aboutService.getPeople();
-    //auth check
-    this.checkAdminStatus = this.authService.getAdminStatus()
-  }
-
-  onEdit(id: string) {
-    this.router.navigate([`people/${id}/edit`]);
-  }
-
-  onDelete(id: string, name: string) {
-    this.openDialog(id, name);
   }
 
   ngOnDestroy() {

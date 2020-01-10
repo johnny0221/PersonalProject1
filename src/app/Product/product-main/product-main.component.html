@@ -1,6 +1,6 @@
 <button *ngIf="adminStatus | async" mat-raised-button color="primary" routerLink="/product/create"
     class="mg-small">Create Product</button>
-<button *ngIf="adminStatus | async" mat-raised-button color="accent" routerLink="/ingredient/create"
+<button *ngIf="adminStatus | async" mat-raised-button color="accent" routerLink="/product/ingredient/create"
     class="mg-small">Create
     Ingredients</button>
 <div class="container">
@@ -8,7 +8,7 @@
         <h3 class="heading-3 product__title">蛋糕，甜品</h3>
         <hr />
         <p class="product__text">歐莫幸福提供了數十種的蛋糕口味, 每一口都能體驗到幸福與溫暖</p>
-        <a routerLink="/chinese/product/desserts" class="product__btn">了解更多 &rarr;</a>
+        <a routerLink="/product/desserts" class="product__btn">了解更多 &rarr;</a>
     </div>
     <img src="../../../assets/imgs/product1.jpg" alt="desserts" class="product__image">
 </div>
@@ -17,7 +17,7 @@
         <h3 class="heading-3 product__title">飲料，咖啡</h3>
         <hr />
         <p class="product__text">用心釀造的飲料，堅持手沖的咖啡，每一口都能品嘗到店家對飲品品質的堅持</p>
-        <a routerLink="/chinese/product/drinks" class="product__btn">了解更多 &rarr;</a>
+        <a routerLink="/product/drinks" class="product__btn">了解更多 &rarr;</a>
     </div>
     <img src="../../../assets/imgs/product2.jpg" alt="drinks" class="product__image">
 </div>
@@ -26,7 +26,7 @@
         <h3 class="heading-3 product__title">輕食</h3>
         <hr />
         <p class="product__text">義大利麵，手擀麵皮的比薩，各式熱量低的輕食來等著你們來探索</p>
-        <a routerLink="/chinese/product/lightmeals" class="product__btn">了解更多 &rarr;</a>
+        <a routerLink="/product/lightmeals" class="product__btn">了解更多 &rarr;</a>
     </div>
     <img src="../../../assets/imgs/product3.jpg" alt="lightMeal" class="product__image">
 </div>

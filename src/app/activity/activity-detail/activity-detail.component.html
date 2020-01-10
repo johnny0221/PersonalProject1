@@ -1,0 +1,21 @@
+<app-navbar>
+    <div>
+        <section class="ActivitySection">
+            <img [src]="(TargetActivity | async)?.image" alt="" class="image">
+        </section>
+        <section class="ActivitySection">
+            <h2 class="title">活動主題</h2>
+            <h3 class="Activity__name center">{{ (TargetActivity | async)?.name }}</h3>
+        </section>
+        <section class="ActivitySection">
+            <h2 class="title">活動日期</h2>
+            <h3 class="Activity__date center">
+                {{ (TargetActivity | async)?.DateStart.toString().slice(0, 10) + ' - ' +  (TargetActivity | async)?.DateEnd.toString().slice(0, 10)}}
+            </h3>
+        </section>
+        <section class="ActivitySection">
+            <h2 class="title">活動內容</h2>
+            <p class="Activity__description centered">{{ (TargetActivity | async)?.description }}</p>
+        </section>
+    </div>
+</app-navbar>

@@ -1,0 +1,41 @@
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <p class="loading__center">Loading...</p>
+</div>
+
+<div class="container" *ngIf="!isLoading">
+    <mat-card>
+        <h3 class="title-activity center">新增活動</h3>
+        <form action="" [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+            <div class="center">
+                <mat-form-field>
+                    <input matInput type="text" placeholder="name" formControlName="name" name="name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker1" placeholder="開始時間" formControlName="DateStart"
+                        name="DateStart">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <p *ngIf="form.errors" class="form__error">結束時間小於開始時間</p>
+                    <input matInput [matDatepicker]="picker2" placeholder="結束時間" formControlName="DateEnd"
+                        name="DateEnd">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="text" placeholder="image" formControlName="image" name="image">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput rows="6" formControlName="description" name="description"
+                        placeholder="description"></textarea>
+                </mat-form-field>
+                <div class="form__btn">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

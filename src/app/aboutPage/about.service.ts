@@ -14,7 +14,6 @@ export class aboutService {
 
     getPeople() {
         this.http.get<{ data: peopleModel[] }>("http://localhost:3000/people").subscribe((people) => {
-            console.log(people);
             this.people = people.data;
             this.peopleData.next([...this.people]);
         })
@@ -28,7 +27,7 @@ export class aboutService {
         const personInfo = { id: id, name: people.name, position: people.position, age: people.age, image: people.image, description: people.text };
         this.http.put<{ message: string }>(`http://localhost:3000/people/${id}`, personInfo).subscribe(
             (message) => {
-                this.router.navigate(["/chinese/about"]);
+                this.router.navigate(["/about"]);
             })
     }
 
@@ -36,7 +35,7 @@ export class aboutService {
         const newPerson = { ...people };
         this.http.post<{ message: string }>("http://localhost:3000/people", newPerson).subscribe(
             (message) => {
-                this.router.navigate(["/chinese/about"]);
+                this.router.navigate(["/about"]);
             });
     }
 

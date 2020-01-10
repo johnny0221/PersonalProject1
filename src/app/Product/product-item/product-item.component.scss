@@ -1,6 +1,6 @@
 @import '../../../assets/scss/variables.scss';
 .product {
-
+    font-family: 'Dancing Script', cursive;
     margin-bottom: 3rem;
 
     &__title {
@@ -10,11 +10,10 @@
     &__text {
         font-size: 2rem;
         margin-top: 2rem;
-
-        @media(max-width : 600px) {
-            
-        }
+        font-family: 'Dancing Script', cursive;
     }
+
+    
 
     &__intro {
         display: flex;
@@ -77,6 +76,12 @@
 
   &__description {
       font-size: 1.3rem;
+      display: block;
+      width: 75vw;
+
+      @media(max-width : 600px) {
+        width: 50vw;
+    }
   }
 
 }
@@ -84,6 +89,7 @@
 .relate {
     display: flex;
     justify-content: space-between;
+    position: relative;
 
     @media(max-width : 750px) {
         flex-direction: column;
@@ -92,6 +98,11 @@
     &__img {
         width: 10rem;;
         height: 10rem;
+
+        @media(max-width : 600px) {
+            width: 20rem;;
+            height: 20rem;;
+        }
     }
 
     &__detail {
@@ -113,6 +124,11 @@
         }
     }
 
+    &__text {
+        font-size: 2rem;
+        font-family: 'Dancing Script', cursive;
+    }
+
 }
 
 mat-card {
@@ -132,13 +148,17 @@ mat-card {
     color: $color-grey-dark-2;
 }
 
-.btn {
-    width: 70%;
-    border-radius: 10rem;
+// .btn {
+//     width: 70%;
+//     border-radius: 10rem;
 
-    @media(max-width : 400px) {
-        width: 93%;
-    }
+//     @media(max-width : 400px) {
+//         width: 93%;
+//     }
+// }
+
+mat-raised-button {
+    width: 50%;
 }
 
 .mg-small {

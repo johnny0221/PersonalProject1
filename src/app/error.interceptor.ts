@@ -20,7 +20,7 @@ export class errorInterceptor implements HttpInterceptor {
                 }
                 this.dialog.open(ErrorDialogComponent, { data: { message: errorMsg, title: "發生錯誤!" } });
                 this.dialog.afterAllClosed.subscribe(() => {
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/auth/login']);
                 });
                 return throwError(error);
             })

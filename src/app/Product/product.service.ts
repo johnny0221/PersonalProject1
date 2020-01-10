@@ -14,7 +14,7 @@ export class ProductService {
 
     ProductData: ProductModel[] = []
     private TargetProductSub: Subject<any> = new Subject();
-    private productDataSub: Subject<ProductModel[]> = new Subject<ProductModel[]>();
+    productDataSub: Subject<ProductModel[]> = new Subject<ProductModel[]>();
     private IngredientDataSub: Subject<string[]> = new Subject();
 
     ProductDataSubListener() {
@@ -27,8 +27,7 @@ export class ProductService {
 
     createProduct(product: ProductModel) {
         this.http.post<{ message: string }>('http://localhost:3000/product', product).subscribe((message) => {
-            console.log(message);
-            this.router.navigate(['/chinese/product/' + product.type]);
+            this.router.navigate(['product/' + product.type]);
         });
     }
 
@@ -137,7 +136,7 @@ export class ProductService {
             .subscribe((data) => {
                 this.ProductData = data.product;
                 this.productDataSub.next([...this.ProductData]);
-            })
+            });
     }
 
     getTargetProduct(id: string, pageSize?: number, currentPage?: number) {
@@ -170,14 +169,14 @@ export class ProductService {
         //回到哪個route
         const navigateRoute = product.type;
         this.http.put(`http://localhost:3000/product/${id}`, updateProduct).subscribe((message) => {
-            this.router.navigate(['/chinese/product/' + navigateRoute]);
+            this.router.navigate(['/product/' + navigateRoute]);
         })
     }
 
     deleteProduct(id: string, currentType: string) {
         this.http.delete(`http://localhost:3000/product/${id}`).subscribe((message) => {
             this.getType(currentType);
-            this.router.navigate([`/chinese/product/${currentType}`]);
+            this.router.navigate([`/product/${currentType}`]);
         })
     }
 
@@ -188,7 +187,7 @@ export class ProductService {
 
     updateIngredient(ingredients: string[]) {
         this.http.put<{ msg: string }>('http://localhost:3000/ingredient', ingredients).subscribe((msg) => {
-            this.router.navigate(['/chinese/product'])
+            this.router.navigate(['/product'])
         })
     }
 
@@ -203,7 +202,8 @@ export class ProductService {
         }
     }
 
-    //Main page get random 4 product
+    //Main page get random 3 products
+    //NTF: move to the main service.
     getRandomProduct() {
         return this.http.get<ProductModel[]>('http://localhost:3000/randomproduct');
     }
@@ -215,12 +215,39 @@ export class ProductService {
             userId: userId,
             comment: comment
         }
-        console.log('hi');
         return this.http.post<{ message: string, product: any }>('http://localhost:3000/comment/add', commentData);
     }
 
     //delete Comments
     deleteComment(id: string) {
         return this.http.delete<{ message: string }>(`http://localhost:3000/comment/delete/${id}`);
+    }
+
+    searchItem(input: string, type: string) {
+        let data = {
+            input,
+            type
+        }
+        console.log(data);
+        return this.http.post<{ data: any[] }>('http://localhost:3000/product/search', data)
+            .pipe(
+                map((product) => {
+                    return {
+                        product: product.data.map(
+                            (product) => {
+                                return {
+                                    id: product._id,
+                                    name: product.name,
+                                    type: product.type,
+                                    price: product.price,
+                                    calory: product.calory,
+                                    imageUrl: product.imageUrl,
+                                    description: product.description,
+                                    ingredients: product.ingredients,
+                                }
+                            })
+                    }
+                })
+            )
     }
 }

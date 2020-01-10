@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatInputModule, MatCardModule, MatDialogModule, MatSelectModule, MatListModule, } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+
+
 
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
         MatButtonModule,
         MatInputModule,
         MatCardModule,
@@ -18,10 +20,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatExpansionModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     exports: [
-        BrowserAnimationsModule,
         MatButtonModule,
         MatInputModule,
         MatCardModule,
@@ -31,7 +34,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatExpansionModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ]
 })
 export class AngularMaterialModule {

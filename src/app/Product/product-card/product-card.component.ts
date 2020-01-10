@@ -5,6 +5,7 @@ import { ConfirmComponent } from '../../CustomDialogs/confirm-dialog/confirm.com
 import { MatDialog } from '@angular/material';
 import { ProductService } from '../product.service';
 import { authService } from '../../auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +15,7 @@ import { authService } from '../../auth/auth.service';
 export class ProductCardComponent implements OnInit {
 
   @Input() product: ProductModel
-  checkAdminStatus;
+  public checkAdminStatus: Observable<boolean>;
 
   constructor(
     private router: Router,
@@ -36,7 +37,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   toItem(id: string) {
-    this.router.navigate([`/chinese/product/${id}`]);
+    this.router.navigate([`/product/${id}`]);
   }
 
   openDialog(id: string, name: string, ): void {

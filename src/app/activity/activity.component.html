@@ -1,0 +1,31 @@
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <p class="loading__center">Loading...</p>
+</div>
+
+<app-navbar *ngIf="!isLoading" (scroll)="scroll()">
+    <button routerLink="/activity/create" mat-raised-button color="primary"
+        *ngIf="checkAdminStatus | async">Create</button>
+    <h2 class="title">Recent Activity</h2>
+    <div>
+        <div *ngFor="let Activity of (ActivityData | async)?.Activity">
+            <div *ngIf="checkAdminStatus | async">
+                <button mat-button color="primary" (click)="onEdit(Activity._id)">Edit</button>
+                <button mat-button color="warn" (click)="onDelete(Activity._id)">Delete</button>
+            </div>
+            <mat-card class="card">
+                <img [src]="Activity.image" alt="img" class="activity__img">
+                <div class="activity__content">
+                    <p class="activity__date">{{ Activity.DateStart.toString().slice(0, 10)}}</p>
+                    <h4 class="activity__title">{{ Activity.name }}</h4>
+                    <p class="activity__description">
+                        {{ Activity.description.length > 50 ? Activity.description.slice(0, 50) : Activity.description }}
+                        <a [routerLink]="'/activity/' + Activity._id" class="todetail">...more</a>
+                    </p>
+                </div>
+            </mat-card>
+        </div>
+        <mat-paginator [length]="(ActivityData | async)?.maxlength" [pageIndex]="pageIndex" [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)"></mat-paginator>
+    </div>
+</app-navbar>

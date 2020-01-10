@@ -3,7 +3,7 @@
         <div class="logo">
             <a routerLink="/chinese"><img src="../../../assets/imgs/omo.png" alt="logo" class="logo__size"></a>
         </div>
-        <p class="title">建立會員</p>
+        <p class="title-auth">建立會員</p>
         <form action="" [formGroup]="form" (ngSubmit)="onAdd()" class="form">
             <label for="name" class=form__label>使用者名稱</label>
             <p class="form__error" *ngIf="form.get('name').invalid && !form.get('name').pristine">請至少輸入三個字以上的使用者名稱</p>

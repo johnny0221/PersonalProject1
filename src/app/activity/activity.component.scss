@@ -1,0 +1,62 @@
+@import '../../assets/scss/variables';
+
+.activity {
+
+    &__img {
+        width: 15rem;
+        height: 10rem;
+        margin-right: 4rem;
+    }
+
+    &__content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        color: $color-grey-dark-2;
+        font-family: 'Dancing Script', cursive;
+    }
+
+    &__description {
+        font-size: 1.5rem;
+        font-family:'Scada', sans-serif;
+        color: $color-grey-dark-1;
+    }
+
+    &__date {
+        font-size: 1.5rem;
+        display: inline-block;
+        width: 100%;
+        text-align: end;
+    }
+}
+
+.card {
+    display: flex;
+    margin-bottom: 2rem;
+
+}
+
+//load spinner
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__center {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.3rem;
+        color: $color-grey-dark-2;
+    }
+}
+
+.todetail {
+    font-size: 1.5rem;
+    outline: none;
+    text-decoration: none;
+}

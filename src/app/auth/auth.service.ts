@@ -72,7 +72,7 @@ export class authService {
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 this.saveAuthData(this.token, expirationDate, this.userid);
                 this.authStatus.next(true);
-                if (data.userId === '5ddb14b7ec7ddd4e2082b695') {
+                if (data.name === 'admin') {
                     this.adminStatus.next(true);
                 }
                 this.router.navigate(['/chinese']);
@@ -93,7 +93,7 @@ export class authService {
             this.token = userInfo.token;
             this.userid = userInfo.userId;
             this.setAuthTimer(expiresIn / 1000);
-            if (this.userid === '5ddb14b7ec7ddd4e2082b695') {
+            if (this.userid === '5e0adc3f9c768b4bb47ecff1') {
                 this.adminStatus.next(true);
             }
             this.authStatus.next(true);
@@ -108,7 +108,7 @@ export class authService {
         this.authStatus.next(false);
         this.adminStatus.next(false);
         this.clearAuthData();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
     }
 
     private saveAuthData(token: string, expirationDate: Date, userId: string) {

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-main-feature',
   templateUrl: './main-feature.component.html',
-  styleUrls: ['./main-feature.component.scss']
+  styleUrls: ['./main-feature.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainFeatureComponent implements OnInit {
 
@@ -15,7 +16,7 @@ export class MainFeatureComponent implements OnInit {
   @Input() content: string;
 
   ngOnInit() {
-    
+
   }
 
 }

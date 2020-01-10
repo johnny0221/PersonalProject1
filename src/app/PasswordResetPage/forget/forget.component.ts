@@ -14,8 +14,8 @@ export class ForgetComponent implements OnInit {
 
   constructor(private ForgetService: ForgetService, private dialog: MatDialog, private router: Router) { }
 
-  form: FormGroup;
-  isFetching: boolean;
+  public form: FormGroup;
+  public isFetching: boolean;
 
   ngOnInit() {
     this.isFetching = false;

@@ -10,17 +10,26 @@ import { trigger, transition, group, query, style, animate } from '@angular/anim
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimation', [
-      transition('1 <=> 2', [
-        style({ height: '!' }),
-        query(':enter', style({ opacity: 0 })),
-        query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0 })),
+      transition('1 => 2, 2 => 3', [
+        query(':enter', style({ transform: "translateX(100%)" })),
+        query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, width: '100%' })),
         group([
           query(':leave', [
-            animate('3s cubic-bezier(.35,0,.25,1)', style({ opacity: 0 })),
+            animate('1s cubic-bezier(.35,0,.25,1)', style({ transform: "translateX(-100%)" })),
           ]),
           // and now reveal the enter
-          query(':enter', animate('3s cubic-bezier(.35,0,.25,1)', style({ opacity: 1 }))),
-
+          query(':enter', animate('1s cubic-bezier(.35,0,.25,1)', style({ transform: "translateX(0)" }))),
+        ])
+      ]),
+      transition('2 => 1, 3 => 2', [
+        query(':enter', style({ transform: "translateX(-100%)" })),
+        query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, width: '100%' })),
+        group([
+          query(':leave', [
+            animate('1s cubic-bezier(.35,0,.25,1)', style({ transform: "translateX(100%)" })),
+          ]),
+          // and now reveal the enter
+          query(':enter', animate('1s cubic-bezier(.35,0,.25,1)', style({ transform: "translateX(0)" }))),
         ])
       ])
     ])

@@ -14,8 +14,8 @@ export class ContactPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private contactService: ContactService, private dialog: MatDialog) { }
 
-  form: FormGroup;
-  isLoading: boolean;
+  public form: FormGroup;
+  public isLoading: boolean;
 
   ngOnInit() {
     this.initForm();
