@@ -30,7 +30,7 @@ export class ProductItemComponent implements OnInit {
   public comments: any[];
   public userId: string;
   private isAdmin: boolean;
-  public notAuthorized: string = "notauthenticated";
+  public notAuthorized = 'notauthenticated';
 
 
   private ProductSub: Subscription;
@@ -39,7 +39,7 @@ export class ProductItemComponent implements OnInit {
   public productDetail: ProductDetailModel | any = {};
   public totalComments: number;
 
-  //paginator variables
+  // paginator variables
   private currentPage = 1;
   public pageSize = 2;
   public pageSizeOptions = [2, 5, 10];
@@ -47,16 +47,16 @@ export class ProductItemComponent implements OnInit {
 
 
   ngOnInit() {
-    //check if the user is admin
+    // check if the user is admin
     this.isAdminSub = this.authService.getAdminStatus().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
-    //subscribe to the params observable otherwise the data won't change on the same url pattern.
+    // subscribe to the params observable otherwise the data won't change on the same url pattern.
     this.routeParamsSub = this.route.params.subscribe((params: Params) => {
       this.productId = params.id;
-      //check the authentication status
+      // check the authentication status
       this.userId = this.authService.getUserId();
-      //getting the information from the Product
+      // getting the information from the Product
       this.productService.getTargetProduct(this.productId, this.pageSize, this.currentPage);
       this.ProductSub = this.productService.TargetProductSubListener().subscribe((data) => {
         this.productDetail = {
@@ -74,7 +74,7 @@ export class ProductItemComponent implements OnInit {
         this.comments = data.comments;
         this.totalComments = data.maxComments;
         for (const date of this.comments) {
-          date.createdAt = (<string>date.createdAt).slice(0, 10);
+          date.createdAt = (date.createdAt as string).slice(0, 10);
         }
       });
     });
@@ -99,7 +99,7 @@ export class ProductItemComponent implements OnInit {
     this.productService.getTargetProduct(this.productId, this.pageSize, this.currentPage);
   }
 
-  //add to user shopping cart
+  // add to user shopping cart
   addToShoppingCart() {
     this.shoppingCartService.AddOnetoCart(this.userId, this.productId).subscribe(data => {
       const cartDialogRef = this.dialog.open(CartDialogComponent, {
@@ -108,10 +108,10 @@ export class ProductItemComponent implements OnInit {
       });
 
       cartDialogRef.afterClosed().subscribe(value => {
-        if (value === "tocart") {
-          this.router.navigate([`/${this.userId}/cart`]);
+        if (value === 'tocart') {
+          this.router.navigate([`cart/${this.userId}`]);
         }
-        if (value === "stay") {
+        if (value === 'stay') {
           this.router.navigate([`product/${this.productId}`])
         }
       });
@@ -124,10 +124,10 @@ export class ProductItemComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((UserComment) => {
       if (UserComment) {
-        let userId = this.authService.getUserId();
+        const userId = this.authService.getUserId();
         this.productService.addComment(this.productId, userId, UserComment).subscribe(data => {
           this.totalComments = this.totalComments + 1;
-          let lastPageIndex = Math.ceil(this.totalComments / this.pageSize) - 1;
+          const lastPageIndex = Math.ceil(this.totalComments / this.pageSize) - 1;
           this.pageIndex = lastPageIndex;
           this.productService.getTargetProduct(this.productId, this.pageSize, lastPageIndex + 1);
         })
@@ -143,7 +143,7 @@ export class ProductItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data === true) {
         this.productService.deleteComment(id).subscribe((data) => {
-          //we have to take the data exactly where the pageIndex correspond.
+          // we have to take the data exactly where the pageIndex correspond.
           this.pageIndex = 0;
           this.totalComments = this.totalComments - 1;
           this.productService.getTargetProduct(this.productId, this.pageSize, 1);

@@ -46,11 +46,11 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ToProductPage() {
-    this.router.navigate(['/chinese/product']);
+    this.router.navigate(['/product']);
   }
 
   ngOnDestroy() {
-    console.log('destroy');
+
   }
 
 

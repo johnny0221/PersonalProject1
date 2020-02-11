@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ProductService } from '../product.service';
 import { ProductModel } from '../../Interfaces/product.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,7 +21,12 @@ export class ProductDessertsComponent implements OnInit {
   public form: FormGroup;
   @ViewChild('search', { static: false }) search: ElementRef;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private Location: Location) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private Location: Location,
+    @Inject(PLATFORM_ID) private platformId) { }
 
   ngOnInit() {
     this.initForm();
@@ -31,7 +37,10 @@ export class ProductDessertsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    let type = this.Location.path().slice(9);
+    let type = "";
+    if (isPlatformBrowser(this.platformId)) {
+      type = this.Location.path().slice(9);
+    }
     fromEvent(this.search.nativeElement, 'input')
       .pipe(
         map((data: any) => {

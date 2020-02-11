@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, Renderer2, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2, AfterViewInit, ElementRef, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { authService } from '../auth/auth.service';
 import { ProductService } from '../Product/product.service';
 import { Observable } from 'rxjs';
@@ -24,7 +25,8 @@ export class MainComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private renderer: Renderer2,
-    private elem: ElementRef) { }
+    private elem: ElementRef,
+    @Inject(PLATFORM_ID) private platformId) { }
 
 
 
@@ -33,48 +35,45 @@ export class MainComponent implements OnInit {
     this.username = this.authService.getUsername();
     this.randomData = this.productService.getRandomProduct();
     this.userid = this.authService.getUserId();
-    this.autoanimate = setInterval(() => {
-      this.next();
-    }, 5000)
   }
 
   //carousel function start
-  ngAfterViewInit() {
-    this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .5s');
-    this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(-100%)`);
-  }
+  // ngAfterViewInit() {
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .5s');
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(-100%)`);
+  // }
 
-  next() {
-    let elements = this.elem.nativeElement.querySelectorAll(".carousel__photo");
-    //prevent user from clicking when the coutner exceed.
-    if (this.counter >= elements.length - 1) return;
-    this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .4s');
-    this.counter++;
-    this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
-  }
+  // next() {
+  //   let elements = this.elem.nativeElement.querySelectorAll(".carousel__photo");
+  //   //prevent user from clicking when the coutner exceed.
+  //   if (this.counter >= elements.length - 1) return;
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .4s');
+  //   this.counter++;
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
+  // }
 
-  previous() {
-    //prevent user from clicking when the coutner exceed.
-    if (this.counter <= 0) return;
-    this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .4s');
-    this.counter--;
-    this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
-  }
+  // previous() {
+  //   //prevent user from clicking when the coutner exceed.
+  //   if (this.counter <= 0) return;
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transition', 'all .4s');
+  //   this.counter--;
+  //   this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
+  // }
 
-  transitioned() {
-    let elements = this.elem.nativeElement.querySelectorAll(".carousel__photo");
-    if (elements[this.counter].id === "lastclone") {
-      this.renderer.setStyle(this.slider.nativeElement, 'transition', 'none');
-      this.counter = elements.length - 2;
-      this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
-    }
-    if (elements[this.counter].id === "firstclone") {
-      this.renderer.setStyle(this.slider.nativeElement, 'transition', 'none');
-      this.counter = elements.length - this.counter;
-      this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
-    }
+  // transitioned() {
+  //   let elements = this.elem.nativeElement.querySelectorAll(".carousel__photo");
+  //   if (elements[this.counter].id === "lastclone") {
+  //     this.renderer.setStyle(this.slider.nativeElement, 'transition', 'none');
+  //     this.counter = elements.length - 2;
+  //     this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
+  //   }
+  //   if (elements[this.counter].id === "firstclone") {
+  //     this.renderer.setStyle(this.slider.nativeElement, 'transition', 'none');
+  //     this.counter = elements.length - this.counter;
+  //     this.renderer.setStyle(this.slider.nativeElement, 'transform', `translateX(${-100 * this.counter}%)`);
+  //   }
 
-  }
+  // }
   //carousel function end
 
   toAbout() {
@@ -98,9 +97,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.autoanimate) {
-      clearInterval(this.autoanimate);
-    }
+
   }
 
 }

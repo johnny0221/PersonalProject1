@@ -16,7 +16,6 @@ export class shoppingCartService {
 
     getTargetUser(id: string) {
         this.http.get<{ userdata: IUser }>(`http://localhost:3000/user/${id}`).subscribe(data => {
-            console.log(data);
             this.UserSubject.next(data.userdata);
         });
     }

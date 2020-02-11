@@ -16,7 +16,7 @@ import { LandingModule } from './landing/landing.module';
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

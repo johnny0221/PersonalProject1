@@ -44,7 +44,7 @@ export class authService {
                 if (data.result.name === 'admin') {
                     this.adminStatus.next(true);
                 }
-                this.router.navigate(['/login']);
+                this.router.navigate(['/auth/login']);
             },
             error => {
                 this.authStatus.next(false);
