@@ -1,10 +1,9 @@
 <div class="background">
-    <div class="container">
         <div class="logo">
             <a routerLink="/chinese"><img src="../../../assets/imgs/omo.png" alt="logo" class="logo__size"></a>
         </div>
-        <p class="title-auth">登入會員</p>
         <form action="" [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+            <p class="title-auth">登入會員</p>
             <label for="name" class=form__label>使用者名稱</label>
             <input type="text" id="name" class="form__input" formControlName="name" name="name">
             <label for="password" class=form__label>輸入密碼</label>
@@ -12,13 +11,12 @@
             <div class="center">
                 <button mat-raised-button color="warn" type="submit" [disabled]="form.invalid">確認</button>
             </div>
+            <div class="createone">
+                <span class="createone__text">還不是會員嗎 ?</span>
+                <a routerLink="/auth/signup" class="createone__link">立馬創立</a>
+            </div>
+            <div class="createone">
+                <a class="createone__text" routerLink="/forget">忘記密碼 ?</a>
+            </div>
         </form>
-        <div class="createone">
-            <span class="createone__text">還不是會員嗎 ?</span>
-            <a routerLink="/auth/signup" class="createone__link">立馬創立</a>
-        </div>
-        <div class="createone">
-            <a class="createone__text" routerLink="/forget">忘記密碼 ?</a>
-        </div>
-    </div>
 </div>
