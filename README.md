@@ -1,27 +1,27 @@
 # OmoDessertProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+This project is a mock Website for OMO Dessert, I create this Website for practicing purposes, if you are really interested in cakes, desserts and coffee, please visit their official facebook fan page https://www.facebook.com/omohappinesshandmade
 
-## Development server
+#Programming Languages / frameworks / libs in this project
+1. Angular 8.0.6
+2. NodeJS(Express)
+3. MongoDB
+4. Angular Material
+5. SCSS
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#About this Website
+•  Designed the layout and content through CSS ”Flex box” and ”Grid system”.
+•  Implemented Angular-Material dialog for User-Friendly reminders.
+•  Implemented ”Custom Form Validator” for several forms’ error checking.
+•  Implemented Several CRUD Functionalities for administrator operations.
+•  Implemented ”Shopping Cart” enable users to do CRUD functionalities.
+•  Constructed ”Pagination functionality” for performance enhancement.
+•  Constructed an ”Authentication System” using JSON Web Token.
+•  Set up ”Password Reset Functionality” for users change their password.
+•  Set up ”Email Sending Functionality” for users to contact
+•  Achieved ”Lazy Loading” and ”Server-side rendering)” for performance enhancement.
+•  Set up multiple middlewares to control authority of each user.
+•  Utilized RxJS subjects and multiple operators to communicate between components.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
