@@ -1,6 +1,6 @@
 # OmoDessertProject
 
-This project is a mock Website for OMO Dessert, I create this Website for practicing purposes, if you are really interested in cakes, desserts and coffee, please visit their official facebook fan page https://www.facebook.com/omohappinesshandmade
+This project is a mock Website for OMO Dessert for practicing purposes, if you are really interested in cakes, desserts and coffee, please visit their official facebook fan page https://www.facebook.com/omohappinesshandmade
 
 # Programming Languages / frameworks / libs in this project
 1. Angular 8.0.6
